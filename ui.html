@@ -1,0 +1,2178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>try{document.documentElement.dataset.theme=localStorage.getItem("theme")||"xbox";}catch(e){document.documentElement.dataset.theme="xbox";}</script>
+<meta charset="utf-8">
+<title>Reforger Mod Browser</title>
+<link rel="icon" href="/favicon.ico">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{
+  --bg:#1b2838; --bg2:#171d25; --panel:#16202d; --panel2:#1f2f43; --line:#2a3f5a; --text:#c6d4df; --dim:#8f98a0;
+  --hi:#66c0f4; --star:#4c9be0; --good:#5c7e10; --goodtxt:#a4d007; --warn:#c0392b; --tag:#3a5170;
+  --glow:transparent; --grid:rgba(255,255,255,.025);
+  --k0f1a26:#0f1a26; --k2a3f5a:#2a3f5a; --k3d5a80:#3d5a80; --k1b2838:#1b2838; --kdfe8f2:#dfe8f2; --kc6d4df:#c6d4df; --k8fa3b8:#8fa3b8; --k1c2c3d:#1c2c3d; --k08131d:#08131d; --k171d25:#171d25; --k1f2f43:#1f2f43; --k9fb3c8:#9fb3c8; --k22354d:#22354d; --k1e3452:#1e3452; --k4c6ef5:#4c6ef5; --k47bfff:#47bfff; --k1a44c2:#1a44c2; --k16202d:#16202d; --k8f98a0:#8f98a0; --k3a5170:#3a5170; --k2c4462:#2c4462; --k171a21:#171a21; --k0f1a2e:#0f1a2e; --k0b1118:#0b1118; --k3a4a5c:#3a4a5c; --k2f4a6b:#2f4a6b; --k4a5563:#4a5563; --k1a1f4a:#1a1f4a; --k2a4a6e:#2a4a6e; --r23-29-37:23,29,37; --r30-52-82:30,52,82; --r42-63-90:42,63,90; --r15-26-38:15,26,38; --r15-26-46:15,26,46; --r102-192-244:102,192,244; --r76-110-245:76,110,245;
+}
+/* Xbox: the original dashboard's black-green and lime */
+html[data-theme=x360]{
+  --bg:#16181a; --bg2:#1b1e21; --panel:#202326; --panel2:#2c3034; --line:#3a3f44; --text:#eef0f2; --dim:#9aa1a8;
+  --hi:#7cc242; --star:#9bd84f; --good:#4e8a1f; --goodtxt:#9bd84f; --warn:#d9412b; --tag:#35532a;
+  --glow:rgba(255,255,255,.09); --grid:rgba(255,255,255,0);
+  --k0f1a26:#141618; --k2a3f5a:#3a3f44; --k3d5a80:#4a5157; --k1b2838:#1b1e21; --kdfe8f2:#ffffff; --kc6d4df:#e2e5e8; --k8fa3b8:#a3aab1; --k1c2c3d:#23272b; --k08131d:#0e0f11; --k171d25:#16181a; --k1f2f43:#2c3034; --k9fb3c8:#b3b9bf; --k22354d:#2f3438; --k1e3452:#2a3f22; --k4c6ef5:#7cc242; --k47bfff:#9bd84f; --k1a44c2:#4e8a1f; --k16202d:#202326; --k8f98a0:#9aa1a8; --k3a5170:#35532a; --k2c4462:#3a4a30; --k171a21:#0f1012; --k0f1a2e:#141618; --k0b1118:#0c0d0f; --k3a4a5c:#454b51; --k2f4a6b:#3e5a2c; --k4a5563:#50565c; --k1a1f4a:#1e2a18; --k2a4a6e:#3e5a2c; --r23-29-37:27,30,33; --r30-52-82:42,63,34; --r42-63-90:58,63,68; --r15-26-38:20,22,24; --r15-26-46:20,22,24; --r102-192-244:124,194,66; --r76-110-245:124,194,66;
+}
+html[data-theme=xbox]{
+  --bg:#0a1609; --bg2:#0a1409; --panel:#0c1a0b; --panel2:#173a14; --line:#1f4a19; --text:#cfe8c2; --dim:#7c9a70;
+  --hi:#8ed63a; --star:#8ed63a; --good:#5c7e10; --goodtxt:#a4d007; --warn:#c0392b; --tag:#245c1c;
+  --glow:rgba(120,210,40,.16); --grid:rgba(140,220,60,.035);
+  --k0f1a26:#081207; --k2a3f5a:#1f4a19; --k3d5a80:#2f6b22; --k1b2838:#0a1609; --kdfe8f2:#e3f7d6; --kc6d4df:#cfe8c2; --k8fa3b8:#8fb07f; --k1c2c3d:#12240f; --k08131d:#041003; --k171d25:#0a1409; --k1f2f43:#173a14; --k9fb3c8:#9fc48c; --k22354d:#1c4217; --k1e3452:#184a14; --k4c6ef5:#6fbf2a; --k47bfff:#b8ff4d; --k1a44c2:#2e7d12; --k16202d:#0c1a0b; --k8f98a0:#7c9a70; --k3a5170:#245c1c; --k2c4462:#22521b; --k171a21:#050d04; --k0f1a2e:#081507; --k0b1118:#050b04; --k3a4a5c:#2c4a25; --k2f4a6b:#28561f; --k4a5563:#3d5535; --k1a1f4a:#0e2a0b; --k2a4a6e:#22561b; --r23-29-37:10,22,9; --r30-52-82:18,48,14; --r42-63-90:34,80,26; --r15-26-38:8,20,7; --r15-26-46:8,21,7; --r102-192-244:142,214,58; --r76-110-245:111,191,42;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);background-image:radial-gradient(ellipse 90% 60% at 50% -10%,var(--glow),transparent 70%),linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:100% 100%,40px 40px,40px 40px;background-attachment:fixed;color:var(--text);font:14px/1.4 "Motiva Sans","Segoe UI",Arial,sans-serif;min-height:100%}
+a{color:var(--hi);text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;border-radius:2px;padding:6px 12px;background:var(--panel2);color:var(--text)}
+button:hover{background:var(--k2c4462)}
+button.primary{background:linear-gradient(90deg,#75b022,#588a1b);color:#fff}
+button.primary:hover{filter:brightness(1.1)}
+button.danger{background:#6b2a2a}
+input,select{font:inherit;background:var(--k0f1a26);color:var(--text);border:1px solid var(--line);border-radius:2px;padding:6px 8px}
+input[type=range]{padding:0}
+header{display:flex;align-items:center;gap:20px;padding:0 20px;height:56px;background:var(--k171a21);border-bottom:1px solid #000;position:sticky;top:0;z-index:5}
+header h1{font-size:17px;margin:0;font-weight:600;color:#fff}
+.navbtns{display:flex;gap:2px}
+.navbtns button{width:34px;height:30px;padding:0;font-size:18px;line-height:1;background:var(--k2a3f5a);color:#fff;border-radius:3px}
+.navbtns button:disabled{opacity:.3;cursor:default}
+.navbtns button:hover:not(:disabled){background:var(--k3d5a80)}
+header nav{display:flex;gap:2px}
+header nav button{background:none;color:var(--dim);padding:8px 14px;border-bottom:2px solid transparent;border-radius:0}
+header nav button.on{color:#fff;border-bottom-color:var(--hi)}
+header .sync{margin-left:auto;display:flex;align-items:center;gap:12px;color:var(--dim);font-size:12px}
+.hdr-pl{display:flex;align-items:center;gap:6px;color:var(--dim);font-size:12px}
+.hdr-pl select{max-width:220px;padding:4px 6px}
+.gear{position:relative}
+.gear>button{font-size:16px;padding:4px 9px;background:none;color:var(--dim)}
+.gear>button:hover{color:#fff;background:var(--panel2)}
+.gearmenu{position:absolute;right:0;top:100%;margin-top:6px;background:var(--k1b2838);border:1px solid var(--line);border-radius:3px;padding:10px;display:none;flex-direction:column;gap:6px;width:340px;z-index:9;box-shadow:0 8px 24px rgba(0,0,0,.6)}
+.gearmenu.on{display:flex}
+.gearmenu .gm-row{font-size:12px;color:var(--dim);word-break:break-all}
+.gearmenu button{text-align:left}
+.banner{height:200px;border-radius:4px 4px 0 0;background:var(--k0f1a2e) url('/banner.jpg') left center/cover no-repeat;display:flex;align-items:center;justify-content:flex-end;padding:0 40px;margin-bottom:0;position:relative}
+.banner::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(var(--r15-26-46),0) 45%,rgba(var(--r15-26-46),.85) 70%);border-radius:4px 4px 0 0}
+.banner-text{position:relative;z-index:1}
+.banner-text{max-width:420px;color:var(--kdfe8f2);text-shadow:0 1px 3px #000}
+.banner-text b{display:block;font-size:15px;margin-bottom:6px;color:#fff}
+.banner-text p{margin:0;font-size:14px;line-height:1.45}
+.subnav{display:flex;gap:4px;background:rgba(var(--r23-29-37),.9);padding:0 14px;margin-bottom:16px;border-radius:0 0 4px 4px}
+.subnav button{background:none;border-radius:0;padding:14px 16px;color:var(--text);font-size:15px;border-bottom:2px solid transparent}
+.subnav button.on{color:#fff;border-bottom-color:#fff}
+.subnav button:hover{color:#fff;background:none}
+.subnav .dd{position:relative}
+.subnav .ddmenu{display:none;position:absolute;left:0;top:100%;background:var(--k1b2838);border:1px solid var(--line);border-radius:0 0 3px 3px;min-width:220px;z-index:8;padding:6px 0;box-shadow:0 8px 24px rgba(0,0,0,.6);max-height:70vh;overflow:auto}
+#ddBrowse{min-width:200px}
+.ddcol{padding-bottom:6px}
+.subnav .dd:hover .ddmenu{display:block}
+.subnav .ddmenu a{display:flex;justify-content:space-between;padding:6px 14px;color:var(--text);font-size:13px}
+.subnav .ddmenu a:hover{background:var(--panel2);color:#fff}
+.subnav .ddmenu a span{color:var(--dim);font-size:12px}
+.subnav .ddmenu h5{margin:6px 14px 2px;font-size:10px;letter-spacing:1px;color:var(--dim);text-transform:uppercase}
+button.outline{background:none;border:1px solid var(--hi);color:var(--hi);padding:6px 16px}
+button.outline:hover{background:var(--hi);color:#000}
+#home,#about{display:none}
+#about.on{display:block}
+footer.foot{display:flex;justify-content:space-between;color:var(--dim);font-size:12px;padding:20px 4px;border-top:1px solid var(--line);margin-top:24px}
+code{background:var(--k0f1a26);padding:1px 5px;border-radius:2px;font-size:12px}
+#home.on{display:block}
+.home-box{background:rgba(var(--r23-29-37),.85);border-radius:3px;padding:16px 20px;margin-bottom:16px}
+.home-grid{display:grid;grid-template-columns:250px 1fr;gap:16px;align-items:start}
+.home-side{background:rgba(var(--r23-29-37),.85);padding:12px;border-radius:3px}
+.home-side .search input{width:100%}
+.home-side h3{font-size:11px;letter-spacing:1px;color:var(--dim);margin:14px 0 6px;text-transform:uppercase;font-weight:600}
+.home-side .hf{display:flex;justify-content:space-between;padding:3px 4px;cursor:pointer;font-size:13px;border-radius:2px}
+.home-side .hf:hover{background:var(--panel2);color:#fff}
+.home-side .hf span{color:var(--dim);font-size:12px}
+.home-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.home-head h2{margin:0;font-size:20px;color:#fff;font-weight:600}
+.home-head small{color:var(--dim)}
+.carousel{display:flex;align-items:center;gap:8px}
+.car-btn{width:34px;height:120px;font-size:26px;background:none;color:var(--dim);padding:0}
+.car-btn:hover{color:#fff;background:none}
+.car-track{flex:1;display:flex;gap:10px;overflow:hidden;scroll-behavior:smooth}
+.car-track .card{flex:0 0 215px}
+.home-tabs{display:flex;gap:22px;border-bottom:0}
+.home-tabs button{background:none;border-radius:0;padding:4px 0;font-size:20px;color:var(--dim);border-bottom:2px solid transparent;font-weight:600}
+.home-tabs button.on{color:#fff;border-bottom-color:var(--hi)}
+.home-tabs button:hover{background:none;color:#fff}
+.home-sub{display:block;color:var(--dim);margin:4px 0 12px}
+.home-list{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.row{display:flex;gap:12px;background:rgba(var(--r15-26-38),.7);padding:8px;border-radius:3px;cursor:pointer;align-items:flex-start}
+.row:hover{background:var(--panel2)}
+.row img{width:96px;height:54px;object-fit:cover;border-radius:2px;background:#000;flex:none}
+.row .body{flex:1;min-width:0}
+.row .top{display:flex;align-items:center;gap:8px}
+.row .name{color:#fff;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1}
+.row .by{color:var(--dim);font-size:12px}
+.row .tags{margin:5px 0 3px;display:flex;gap:4px;flex-wrap:wrap}
+.row .cnt{font-size:11px;color:var(--dim);display:flex;align-items:center}
+.rowbtns{margin-left:auto;display:flex;gap:4px;opacity:0;transition:opacity .1s}
+.row:hover .rowbtns,.rowbtns:has(.on){opacity:1}
+.rowbtns button{padding:2px 9px;font-size:13px;line-height:1.2}
+.rowbtns .plus{background:linear-gradient(90deg,#75b022,#588a1b);color:#fff;font-weight:700}
+.rowbtns .plus.on{background:var(--k2a3f5a)}
+.rowbtns .plusfav{background:var(--k2a3f5a);color:var(--k8fa3b8)}
+.rowbtns .plusfav.on{color:#ff5c7a}
+#hover{position:fixed;display:none;width:300px;background:var(--kc6d4df);color:var(--k1b2838);padding:12px;border-radius:3px;z-index:20;font-size:12px;box-shadow:0 6px 20px rgba(0,0,0,.6);pointer-events:none}
+#hover b{display:block;font-size:14px;margin-bottom:6px}
+#hover .hv-desc{white-space:pre-wrap;margin-bottom:8px;line-height:1.4}
+#hover .hv-meta{color:var(--k3d5a80);margin-bottom:6px;line-height:1.5}
+#hover .tag{background:var(--k3d5a80);color:#fff}
+.bar{height:6px;width:160px;background:var(--k0f1a26);border-radius:3px;overflow:hidden;display:none}
+.bar i{display:block;height:100%;background:var(--hi);width:0}
+.wrap{max-width:1500px;margin:0 auto;padding:16px 20px}
+.titlebar{display:flex;align-items:baseline;gap:10px;margin:4px 0 12px}
+.titlebar h2{margin:0;font-size:20px;color:#fff;font-weight:600}
+.titlebar .sub{color:var(--dim)}
+.titlebar .matching{color:var(--dim);font-size:13px;margin-left:auto}
+main{display:grid;grid-template-columns:250px 1fr 280px;gap:16px;align-items:start}
+.list{background:rgba(var(--r23-29-37),.85);padding:12px;border-radius:3px;display:flex;flex-direction:column;gap:8px;position:sticky;top:72px;max-height:calc(100vh - 90px)}
+.list h2{font-size:15px;margin:0;color:#fff}
+.list .items{overflow:auto;display:flex;flex-direction:column;gap:6px}
+.list .item{display:flex;gap:8px;align-items:center;background:var(--panel2);padding:6px;border-radius:2px}
+.list .item img{width:56px;height:32px;object-fit:cover;border-radius:2px;background:#000}
+.list .item .n{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:13px;cursor:pointer}
+.list .item .s{font-size:11px;color:var(--dim)}
+.list .item button{padding:2px 6px;font-size:12px}
+.list .foot{display:flex;gap:6px;flex-wrap:wrap}
+.pager-row{display:flex;align-items:center;justify-content:flex-end;gap:16px;margin:16px 0}
+.perpage{color:var(--dim);font-size:13px}
+.perpage select{padding:3px 6px}
+/* sidebar */
+aside{background:rgba(var(--r23-29-37),.85);padding:12px;border-radius:3px}
+aside .search{display:flex;gap:6px;margin-bottom:12px}
+aside .search input{flex:1;min-width:0}
+aside .search button{padding:4px 9px;font-size:15px;background:var(--k2a3f5a);color:var(--k9fb3c8)}
+aside .search button:hover{color:#fff}
+aside h3{font-size:11px;letter-spacing:1px;color:var(--dim);margin:14px 0 6px;text-transform:uppercase;font-weight:600}
+.facet{display:flex;align-items:center;gap:6px;padding:2px 0;font-size:13px}
+.facet .pm{display:flex;gap:2px}
+.facet .pm button{width:18px;height:18px;padding:0;font-size:12px;line-height:18px;background:var(--k2a3f5a);color:var(--k9fb3c8);border-radius:2px}
+.facet .pm button:hover{background:var(--k3d5a80);color:#fff}
+.facet .pm button.on{background:var(--good);color:#fff}
+.facet .pm button.off{background:var(--warn);color:#fff}
+.facet .n{flex:1;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer}
+.facet .n:hover{color:#fff}
+.facet .c{color:var(--dim);font-size:12px}
+.facet.dis .n,.facet.dis .c{opacity:.5}
+aside label{display:block;font-size:12px;color:var(--dim);margin-top:8px}
+aside details.more{margin-top:12px}
+aside details.more summary{font-size:11px;letter-spacing:1px;color:var(--dim);text-transform:uppercase;font-weight:600;cursor:pointer;list-style:none}
+aside details.more summary::before{content:'▸ ';}
+aside details.more[open] summary::before{content:'▾ ';}
+aside details.more input[type=search]{width:100%;margin:6px 0}
+#tagfacets{max-height:260px;overflow:auto}
+aside input[type=number]{width:72px}
+aside .chips{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+.chip{font-size:11px;padding:2px 8px;border-radius:10px;background:var(--good);color:#fff;cursor:pointer}
+.chip.no{background:var(--warn)}
+/* content */
+.ctl{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.ctl .spacer{flex:1}
+.sortbox{position:relative}
+.sortbox>button{display:flex;align-items:center;gap:8px;padding:8px 14px;background:var(--k2a3f5a);color:#fff}
+.sortbox>button:hover{background:var(--k3d5a80)}
+.sortmenu{position:absolute;right:0;top:100%;margin-top:4px;background:var(--k1b2838);border:1px solid var(--line);border-radius:3px;padding:12px;display:none;grid-template-columns:1fr 1fr;gap:20px;z-index:6;width:460px;box-shadow:0 8px 24px rgba(0,0,0,.6)}
+.sortmenu.on{display:grid}
+.sortmenu h4{margin:0 0 6px;font-size:11px;letter-spacing:1px;color:var(--dim);text-transform:uppercase}
+.sortmenu label{display:flex;gap:8px;align-items:center;padding:4px 2px;cursor:pointer;color:var(--text);font-size:13px}
+.sortmenu label:hover{color:#fff}
+.sortmenu label.dis{opacity:.4}
+.rangebox{grid-column:1/-1;border-top:1px solid var(--line);padding-top:10px;display:flex;flex-direction:column;gap:8px}
+.rangebox.dis{opacity:.4;pointer-events:none}
+.rb-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.rb-row label{padding:0;gap:6px;font-size:12px;color:var(--dim)}
+.rb-row input[type=date]{background:var(--k0f1a26);color:#fff;border:1px solid var(--line);border-radius:3px;padding:4px 6px;color-scheme:dark}
+.rb-row select{background:var(--k0f1a26);color:#fff;border:1px solid var(--line);border-radius:3px;padding:4px 6px}
+.rb-row button{padding:4px 10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(212px,1fr));gap:12px}
+.card{background:rgba(var(--r23-29-37),.9);border-radius:3px;overflow:hidden;cursor:pointer;position:relative;border:1px solid transparent}
+.card:hover{border-color:var(--line);background:var(--k1f2f43)}
+.card .img{aspect-ratio:16/9;background:var(--k0b1118) center/cover no-repeat}
+.card .meta{padding:8px 10px 10px}
+.stars{display:inline-flex;gap:1px;font-size:14px;letter-spacing:-1px;color:var(--star);line-height:1}
+.stars.none{color:var(--k3a4a5c)}
+.card .votes{font-size:11px;color:var(--dim);margin-left:6px}
+.card .name{color:#fff;font-weight:600;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:13px}
+.card .by{color:var(--dim);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card .num{display:flex;gap:10px;font-size:11px;color:var(--dim);margin-top:5px}
+.card .num b{color:var(--text);font-weight:600}
+.card .tags{margin-top:5px;display:flex;gap:4px;flex-wrap:wrap;min-height:16px;padding-right:60px}
+.tag{font-size:10px;background:var(--tag);color:var(--kdfe8f2);padding:1px 6px;border-radius:2px;text-transform:capitalize}
+.card .add{position:absolute;right:34px;bottom:6px;width:26px;height:22px;padding:0;font-size:16px;font-weight:700;line-height:22px;text-align:center;background:linear-gradient(90deg,#75b022,#588a1b);color:#fff;opacity:0;transition:opacity .1s;border-radius:2px}
+.card:hover .add,.card.listed .add{opacity:1}
+.card.listed .add{background:var(--k2a3f5a);color:var(--goodtxt)}
+.card .badge{position:absolute;left:6px;top:6px;font-size:10px;padding:1px 6px;border-radius:2px;background:rgba(0,0,0,.65);color:var(--goodtxt)}
+.card .gain{color:var(--goodtxt)}
+.pager{display:flex;gap:6px;justify-content:flex-end;align-items:center;color:var(--dim);font-size:13px}
+.pager button{padding:4px 10px}
+.pager button.pg{background:none;color:var(--text);cursor:pointer;padding:2px 6px}
+.pager button.pg:hover{color:#fff;background:var(--panel2)}
+.pager button.pg.on{color:#fff;text-decoration:underline}
+/* list */
+.list{background:rgba(var(--r23-29-37),.85);padding:12px;border-radius:3px;display:flex;flex-direction:column;gap:8px;position:sticky;top:72px;max-height:calc(100vh - 90px)}
+.list h2{font-size:15px;margin:0;color:#fff}
+.list .hint{font-size:12px;color:var(--dim)}
+.list .items{overflow:auto;display:flex;flex-direction:column;gap:6px}
+.list .item{display:flex;gap:8px;align-items:center;background:var(--panel2);padding:6px;border-radius:2px}
+.list .item img{width:56px;height:32px;object-fit:cover;border-radius:2px;background:#000}
+.list .item .n{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:13px;cursor:pointer}
+.list .item .s{font-size:11px;color:var(--dim)}
+.list .item button{padding:2px 6px;font-size:12px}
+.list .foot{display:flex;gap:6px;flex-wrap:wrap}
+.plrow{display:flex;gap:4px}
+.plrow select{flex:1;min-width:0}
+.plactions{display:flex;gap:4px;flex-wrap:wrap}
+.plactions button{padding:3px 8px;font-size:12px}
+.card .fav{position:absolute;right:6px;bottom:6px;width:24px;height:22px;padding:0;font-size:14px;line-height:22px;text-align:center;background:var(--k2a3f5a);color:var(--k8fa3b8);opacity:0;transition:opacity .1s;border-radius:2px}
+.card:hover .fav,.card.faved .fav{opacity:1}
+.card.faved .fav{color:#ff5c7a}
+.card .del{position:absolute;right:6px;top:6px;height:22px;padding:0 7px;font-size:11px;line-height:22px;background:rgba(0,0,0,.7);color:#e8a0a0;opacity:0;transition:opacity .1s;border-radius:2px}
+.card:hover .del{opacity:1}
+.card.pending .del{opacity:1;color:#ffcf6b}
+.gamebar{display:flex;align-items:center;gap:10px;background:var(--k0f1a26);border:1px solid var(--k1c2c3d);border-radius:3px;padding:8px 12px;margin-bottom:12px;font-size:13px;color:var(--text)}
+.gamebar .dot{width:9px;height:9px;border-radius:50%;background:#556;flex:none}
+.gamebar .dot.ok{background:var(--goodtxt)} .gamebar .dot.busy{background:#ffcf6b;animation:blink 1s infinite} .gamebar .dot.wait{background:var(--hi)}
+@keyframes blink{50%{opacity:.3}}
+.gamebar .sp{flex:1}
+.gamebar button{padding:4px 10px;font-size:12px}
+.gamebar .pbar{width:160px;height:6px;background:var(--k1c2c3d);border-radius:3px;overflow:hidden}.gamebar .pbar i{display:block;height:100%;background:var(--goodtxt);width:0}
+#hdrgame{font-size:12px;color:var(--dim);white-space:nowrap}
+#hdrgame b{color:var(--goodtxt);font-weight:600}
+.rem-item{display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid var(--k1c2c3d);font-size:13px}
+.rem-item img{width:48px;height:27px;object-fit:cover;border-radius:2px;background:#000}
+.rem-item .n{flex:1;color:#fff}
+.active-pl{color:var(--goodtxt)}
+.total{font-size:12px;color:var(--dim)}
+/* playlists page */
+#playlists{display:none}
+#playlists.on{display:block}
+.pl-grid{display:grid;grid-template-columns:280px 1fr;gap:16px;align-items:start}
+.pl-side,.pl-main{background:rgba(var(--r23-29-37),.85);border-radius:3px;padding:14px}
+.pl-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.pl-head h3{margin:0;font-size:15px;color:#fff}
+.pl-item{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:2px;cursor:pointer}
+.pl-item:hover{background:var(--panel2)}
+.pl-item.on{background:var(--k2a3f5a);color:#fff}
+.pl-item .n{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pl-item .c{color:var(--dim);font-size:12px}
+.pl-item .live{font-size:10px;background:var(--good);color:#fff;padding:1px 6px;border-radius:2px}
+.pl-title{display:flex;align-items:baseline;gap:12px;margin-bottom:8px}
+.pl-title h2{margin:0;font-size:20px;color:#fff;font-weight:600}
+.pl-actions{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.pl-main .items{display:flex;flex-direction:column;gap:6px}
+.pl-main .item{display:flex;gap:10px;align-items:center;background:rgba(var(--r15-26-38),.7);padding:8px;border-radius:2px}
+.pl-main .item img{width:96px;height:54px;object-fit:cover;border-radius:2px;background:#000}
+.pl-main .item .n{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer;color:#fff}
+.pl-main .item .s{font-size:12px;color:var(--dim)}
+.pl-main .item button{padding:3px 8px;font-size:12px}
+.hint{font-size:12px;color:var(--dim)}
+/* mod page */
+#modpage{display:none}
+#modpage.on{display:block}
+main.hidden{display:none}
+.mp-crumb{color:var(--dim);font-size:13px;margin-bottom:6px}
+.mp-crumb a{color:var(--dim)}
+.mp-crumb a:hover{color:#fff}
+.mp-head{display:flex;align-items:flex-start;gap:20px;background:rgba(var(--r23-29-37),.85);padding:16px 20px;border-radius:3px}
+.mp-head h1{margin:0;font-size:26px;color:#fff;font-weight:400;flex:1}
+.mp-rating{text-align:right}
+.mp-rating .stars{font-size:26px}
+.mp-rating small{display:block;color:var(--dim);font-size:12px}
+.mp-tabs{display:flex;gap:18px;margin:14px 20px 0;border-bottom:1px solid var(--line)}
+.mp-tabs button{background:none;border-radius:0;padding:8px 2px;color:var(--dim);border-bottom:2px solid transparent}
+.mp-tabs button.on{color:#fff;border-bottom-color:var(--hi)}
+.mp-tabs button b{background:var(--k2a3f5a);color:#fff;border-radius:2px;padding:0 6px;margin-left:4px;font-weight:400;font-size:11px}
+.mp-body{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:16px;margin-top:14px}
+.mp-body>div{min-width:0}
+.mp-gallery{background:rgba(var(--r23-29-37),.85);padding:12px;border-radius:3px}
+.mp-main{width:100%;aspect-ratio:16/9;object-fit:contain;background:#000;border-radius:2px;display:block}
+.mp-thumbs{display:flex;gap:6px;margin-top:8px;overflow-x:auto;overflow-y:hidden;max-width:100%}
+.mp-thumbs img{flex:none;height:56px;width:100px;object-fit:cover;border:2px solid transparent;border-radius:2px;cursor:pointer;background:#000}
+.mp-thumbs img.on{border-color:var(--hi)}
+.mp-actions{display:flex;gap:6px;margin-top:12px;flex-wrap:wrap}
+.mp-actions button{padding:6px 12px}
+.mp-side{background:rgba(var(--r23-29-37),.85);padding:12px;border-radius:3px;font-size:13px}
+.mp-side img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:2px;background:#000}
+.mp-side table{width:100%;border-collapse:collapse;margin-top:10px}
+.mp-side td{padding:3px 0;vertical-align:top}
+.mp-side td:first-child{color:var(--dim);width:42%}
+.mp-sub{background:rgba(var(--r23-29-37),.85);padding:16px 20px;border-radius:3px;margin-top:16px;display:flex;align-items:center;gap:20px}
+.mp-sub .t{flex:1}
+.mp-sub .t small{display:block;color:var(--dim);font-size:12px}
+.mp-sub .t b{font-size:20px;color:#fff;font-weight:400}
+.mp-sub button.big{font-size:16px;padding:10px 22px}
+.mp-sub button.big.subscribed{background:var(--k2a3f5a);color:var(--k8fa3b8);cursor:default}
+.mp-sub button.big.subscribed:hover{color:var(--kc6d4df)}
+.mp-sub button.big.subscribed .unsub{display:none}
+.mp-sub button.big.subscribed:hover .unsub{display:inline}
+.mp-sub button.big.subscribed:hover .sub{display:none}
+.mp-sub .state{font-size:12px;margin-top:4px}
+.mp-sub .state.ok{color:var(--goodtxt)} .mp-sub .state.wait{color:#ffcf6b}
+.mp-desc{background:rgba(var(--r23-29-37),.85);padding:16px 20px;border-radius:3px;margin-top:16px;white-space:pre-wrap;line-height:1.55;font-size:13px}
+.mp-desc h3{margin:0 0 10px;color:var(--hi);font-weight:400;font-size:18px}
+.mp-by{background:rgba(var(--r23-29-37),.85);padding:12px;border-radius:3px;margin-top:16px;font-size:13px}
+.mp-by small{display:block;color:var(--dim);font-size:11px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+.mp-by a{color:#fff;font-size:14px}
+.mp-stats{background:rgba(var(--r23-29-37),.85);padding:12px;border-radius:3px;margin-top:16px;font-size:13px}
+.mp-stats div{display:flex;gap:10px;padding:3px 0}
+.mp-stats b{min-width:80px;text-align:right;color:var(--hi);font-weight:400}
+.mp-deps{background:rgba(var(--r23-29-37),.85);padding:12px;border-radius:3px;margin-top:16px;font-size:13px}
+.mp-deps small{display:block;color:var(--dim);font-size:11px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+.mp-deps a{display:block;padding:4px 0;color:#fff}
+.mp-ver{width:100%;border-collapse:collapse;font-size:13px}
+.mp-ver td{padding:4px 8px;border-bottom:1px solid var(--line)}
+/* modal */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.75);display:none;align-items:flex-start;justify-content:center;padding:30px;overflow:auto;z-index:10}
+.modal.on{display:flex}
+.sheet{background:var(--k1b2838);width:min(1000px,100%);border-radius:4px;border:1px solid var(--line);padding:18px;position:relative}
+.sheet .x{position:absolute;right:12px;top:10px;background:none;font-size:22px;color:var(--dim)}
+.sheet h2{margin:0 36px 2px 0;color:#fff}
+.sheet .by{color:var(--dim);margin-bottom:10px}
+.sheet .shots{display:flex;gap:6px;overflow:auto;margin:10px 0}
+.sheet .shots img{height:170px;border-radius:2px;background:#000}
+.sheet .kv{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:6px 14px;font-size:13px;margin:8px 0}
+.sheet .kv div span{display:block;color:var(--dim);font-size:11px;text-transform:uppercase;letter-spacing:.5px}
+.sheet .desc{white-space:pre-wrap;background:var(--k0f1a26);padding:12px;border-radius:2px;max-height:380px;overflow:auto;font-size:13px;line-height:1.5}
+.sheet .deps{margin:8px 0}
+.sheet .deps a{margin-right:10px}
+.sheet .actions{display:flex;gap:8px;margin-top:12px;align-items:center}
+.empty{color:var(--dim);padding:40px;text-align:center;grid-column:1/-1}
+.deplist{display:flex;flex-direction:column;gap:4px;margin:10px 0;max-height:320px;overflow:auto}
+.dep{display:flex;gap:10px;align-items:center;background:var(--k0f1a26);padding:6px 8px;border-radius:2px;cursor:pointer}
+.dep:hover{background:var(--panel2)}
+.dep img{width:56px;height:32px;object-fit:cover;border-radius:2px;background:#000}
+.dep span{flex:1;color:#fff}
+.dep small{color:var(--dim)}
+@media (max-width:1100px){main{grid-template-columns:1fr}.list{position:static;max-height:none}}
+
+#play{display:none}
+#play.on{display:block}
+/* hero: what you are about to launch */
+.py-hero{display:grid;grid-template-columns:300px 1fr auto;gap:22px;align-items:center;background:linear-gradient(100deg,rgba(var(--r30-52-82),.95),rgba(var(--r23-29-37),.9));border-radius:4px;padding:16px;margin-bottom:16px;border:1px solid var(--k2a3f5a)}
+.py-heroimg{width:300px;height:169px;border-radius:3px;background:var(--k0f1a26) center/cover no-repeat;box-shadow:0 6px 20px rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;color:var(--k2f4a6b);font-size:40px}
+.py-herot h2{margin:0 0 4px;font-size:24px;color:#fff;font-weight:600}
+.py-herot .sub{color:var(--dim);font-size:13px;margin-bottom:10px}
+.py-heroopts{display:flex;flex-direction:column;gap:8px}
+.py-heroopts label{display:flex;align-items:center;gap:8px;font-size:13px}
+.py-heroopts input[type=text],.py-heroopts input:not([type]){flex:1;max-width:360px;padding:5px 8px}
+.py-launch{font-size:22px;padding:18px 44px;border-radius:3px;box-shadow:0 4px 18px rgba(117,176,34,.35)}
+.py-launch:disabled{box-shadow:none}
+.py-cmd{display:none;font:11px/1.4 Consolas,monospace;color:var(--dim);background:rgba(var(--r15-26-38),.8);border:1px solid var(--line);padding:6px 8px;border-radius:2px;word-break:break-all;max-height:60px;overflow:auto;margin-top:6px}
+.py-msg{margin-top:8px;font-size:13px}
+.py-msg.err{color:#ff8a7a}
+.py-msg.ok{color:var(--goodtxt)}
+.py-presets{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+.py-presets select{max-width:220px}
+.py-grid{display:grid;grid-template-columns:minmax(420px,1.25fr) minmax(380px,1fr);gap:16px;align-items:start}
+.py-box{background:rgba(var(--r23-29-37),.88);border-radius:4px;padding:14px;border:1px solid rgba(var(--r42-63-90),.6)}
+.py-box h3{margin:0 0 10px;font-size:15px;color:#fff;display:flex;align-items:center;gap:8px}
+.py-box h3 small{color:var(--dim);font-weight:400;font-size:12px}
+.py-tools{display:flex;gap:6px;margin-bottom:10px;align-items:center}
+.py-tools input{flex:1}
+.py-chips{display:flex;gap:4px}
+.py-chips button{padding:4px 10px;font-size:12px;border-radius:12px;background:var(--k0f1a26);border:1px solid var(--line)}
+.py-chips button.on{background:var(--hi);color:var(--k08131d);border-color:var(--hi)}
+.py-sec{font-size:10px;letter-spacing:1.2px;color:var(--dim);text-transform:uppercase;margin:12px 2px 6px;display:flex;align-items:center;justify-content:space-between}
+.py-secbtns{display:flex;gap:4px}
+.py-secbtns button{font-size:11px;letter-spacing:0;text-transform:none;padding:2px 10px}
+.py-mods{display:flex;flex-direction:column;gap:3px}
+.py-mod{display:flex;align-items:center;gap:10px;padding:5px 8px 5px 5px;border-radius:3px;background:rgba(var(--r15-26-38),.55);border-left:3px solid transparent;cursor:pointer;transition:background .12s}
+.py-mod:hover{background:var(--k22354d)}
+.py-mod.sel{background:rgba(var(--r102-192-244),.12);border-left-color:var(--hi)}
+.py-th{width:72px;height:40px;flex:none;border-radius:2px;background:var(--k0f1a26) center/cover no-repeat;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;color:rgba(255,255,255,.85);letter-spacing:.5px}
+.py-th.sm{width:48px;height:27px;font-size:11px}
+.py-mod .tx{flex:1;min-width:0}
+.py-mod .n{color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:14px}
+.py-mod .m{color:var(--dim);font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.py-mod .b{font-size:10px;padding:1px 6px;border-radius:2px;background:var(--tag);color:var(--kdfe8f2);white-space:nowrap}
+.py-mod .b.loc{background:#6a4a12}
+.py-mod .b.stale{background:#7a2e1f}
+.py-mod .b.wait{background:var(--k4a5563)}
+.py-mod.blk{opacity:.55;cursor:not-allowed}
+.py-mod.blk .m{color:#e0b060}
+.py-mod .nl{cursor:pointer}
+.py-mod .nl:hover{text-decoration:underline}
+.py-mod.blk .nl{cursor:pointer}
+.py-mod .acts{display:flex;gap:4px;opacity:.0;transition:opacity .12s}
+.py-mod:hover .acts,.py-mod .acts.show{opacity:1}
+.py-mod .acts button{padding:2px 8px;font-size:11px}
+.py-chk{width:20px;height:20px;border-radius:50%;border:2px solid var(--k3d5a80);flex:none;display:flex;align-items:center;justify-content:center;font-size:12px;color:transparent}
+.py-mod.sel .py-chk{background:var(--hi);border-color:var(--hi);color:var(--k08131d)}
+.py-order{display:flex;flex-direction:column;gap:3px;max-height:30vh;overflow:auto}
+.py-order .py-mod{cursor:default}
+.py-order .i{color:var(--dim);font-size:11px;width:18px;text-align:right;flex:none}
+.py-order .dep{font-size:10px;color:var(--dim);white-space:nowrap}
+.py-order button{padding:1px 7px;font-size:11px}
+.py-scen{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px}
+.py-card{border-radius:3px;overflow:hidden;background:var(--k0f1a26);cursor:pointer;border:2px solid transparent;transition:transform .12s,border-color .12s}
+.py-card:hover{transform:translateY(-2px);border-color:var(--k3d5a80)}
+.py-card.on{border-color:var(--hi);box-shadow:0 0 0 1px var(--hi),0 6px 16px rgba(var(--r102-192-244),.2)}
+.py-card .im{height:90px;background:linear-gradient(135deg,var(--k1e3452),var(--k0f1a26)) center/cover no-repeat;display:flex;align-items:flex-end;padding:6px}
+.py-card .im span{font-size:10px;background:rgba(0,0,0,.6);color:var(--kdfe8f2);padding:1px 6px;border-radius:2px}
+.py-card .t{padding:6px 8px}
+.py-card .t .n{color:#fff;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.py-card .t .m{color:var(--dim);font-size:11px}
+details.py-van{margin-top:10px}
+details.py-van summary{cursor:pointer;color:var(--dim);font-size:12px;margin-bottom:8px}
+
+.pt-box{background:rgba(var(--r23-29-37),.85);border-radius:3px;padding:14px;margin-bottom:16px;border-left:3px solid var(--hi)}
+.pt-box h3{margin:0 0 10px;font-size:15px;color:#fff;display:flex;align-items:center;gap:10px}
+.pt-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.pt-row input:not([type=checkbox]){min-width:180px}
+.pt-row label{display:flex;align-items:center;gap:6px}
+button:disabled{opacity:.45;cursor:default;filter:none}
+.pt-or{color:var(--dim);font-size:12px;padding:0 6px}
+.pt-addr{font:600 18px Consolas,monospace;color:#fff;background:var(--k0f1a26);border:1px solid var(--line);padding:4px 10px;border-radius:2px}
+.pt-members{display:flex;flex-direction:column;gap:4px;margin:10px 0}
+.pt-mem{display:flex;align-items:center;gap:10px;background:rgba(var(--r15-26-38),.6);padding:6px 10px;border-radius:2px}
+.pt-mem .n{color:#fff;min-width:120px}
+.pt-chip{font-size:11px;padding:2px 8px;border-radius:2px;background:var(--tag);color:var(--kdfe8f2);white-space:nowrap}
+.pt-chip.ok{background:var(--good);color:#fff}
+.pt-chip.bad{background:#7a2e1f;color:#fff}
+.pt-chip.warn{background:#6a4a12;color:#fff}
+.pt-list{display:flex;flex-direction:column;gap:2px;margin:10px 0;max-height:40vh;overflow:auto}
+.pt-list .pt-mem .n{flex:1}
+.pt-big{font-size:16px;padding:10px 22px}
+.pt-bar{height:8px;background:var(--k0f1a26);border-radius:4px;overflow:hidden;flex:1;min-width:160px}
+.pt-bar i{display:block;height:100%;background:var(--hi);width:0}
+.pt-hint{color:var(--dim);font-size:12px;margin-top:6px}
+.pt-err{color:#ff8a7a;font-size:13px;margin-top:6px}
+
+#downloads{display:none}
+#downloads.on{display:block}
+.dl-head{display:flex;align-items:center;gap:28px;background:linear-gradient(90deg,var(--k1a1f4a),var(--k171d25) 60%);border-radius:3px;padding:18px 22px;margin-bottom:16px}
+.dl-stat{font-size:11px;letter-spacing:.5px;color:var(--dim);text-transform:uppercase}
+.dl-stat b{display:block;font-size:14px;color:#fff;letter-spacing:0;text-transform:none}
+.dl-stat.net b::before{content:'▮ ';color:var(--k4c6ef5)}
+.dl-stat.disk b::before{content:'▮ ';color:#5ba32b}
+.dl-graph{flex:1;min-width:200px;width:100%;height:60px;display:block}
+.dl-sec{display:flex;align-items:center;gap:12px;margin:22px 0 10px}
+.dl-sec h3{margin:0;font-size:20px;font-weight:500;color:#fff;white-space:nowrap}
+.dl-sec h3 span{color:var(--dim);font-size:16px}
+.dl-sec hr{flex:1;border:0;border-top:1px solid var(--line)}
+.dl-row{display:flex;align-items:center;gap:18px;padding:10px 0}
+.dl-row .th{width:160px;height:64px;flex:none;border-radius:2px;background:var(--k0f1a26) center/cover no-repeat;display:flex;align-items:center;justify-content:center;color:var(--k2a3f5a);font-size:26px}
+.dl-row .t{flex:1;min-width:0}
+.dl-row .n{color:#fff;font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dl-row .s{color:var(--dim);font-size:12px;margin-top:3px}
+.dl-row .pb{height:6px;background:var(--k0f1a26);border-radius:3px;overflow:hidden;margin-top:8px;max-width:520px}
+.dl-row .pb i{display:block;height:100%;background:linear-gradient(90deg,var(--k47bfff),var(--k1a44c2))}
+.dl-row .r{color:var(--dim);font-size:12px;text-align:right;text-transform:uppercase;min-width:160px}
+.dl-empty{color:var(--dim);padding:6px 14px}
+#navDlCount{font-size:11px;background:var(--hi);color:#000;border-radius:8px;padding:0 6px;margin-left:4px;display:none}
+
+#library{display:none}
+#library.on{display:block}
+.lb-grid{display:grid;grid-template-columns:250px 1fr;gap:16px;align-items:start}
+.lb-side{background:rgba(var(--r23-29-37),.9);border-radius:4px;padding:10px;border:1px solid rgba(var(--r42-63-90),.6);position:sticky;top:70px}
+.lb-side h5{margin:12px 8px 6px;font-size:10px;letter-spacing:1.2px;color:var(--dim);text-transform:uppercase;display:flex;justify-content:space-between;align-items:center}
+.lb-side h5 button{padding:1px 8px;font-size:11px;letter-spacing:0;text-transform:none}
+.lb-nav{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:3px;cursor:pointer;color:var(--text)}
+.lb-nav:hover{background:var(--panel2)}
+.lb-nav.on{background:linear-gradient(90deg,var(--k2a4a6e),var(--k22354d));color:#fff}
+.lb-nav .ic{width:18px;text-align:center;opacity:.8}
+.lb-nav .n{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lb-nav .c{font-size:11px;color:var(--dim)}
+.lb-nav .live{font-size:9px;background:var(--good);color:#fff;padding:1px 5px;border-radius:2px;letter-spacing:.5px}
+.lb-head{display:flex;align-items:flex-end;gap:16px;background:linear-gradient(100deg,rgba(var(--r30-52-82),.95),rgba(var(--r23-29-37),.9));border:1px solid var(--k2a3f5a);border-radius:4px;padding:18px;margin-bottom:12px}
+.lb-head .ti{flex:1;min-width:0}
+.lb-head h2{margin:0;font-size:26px;color:#fff;font-weight:600;display:flex;align-items:center;gap:10px}
+.lb-head h2 .live{font-size:11px;background:var(--good);color:#fff;padding:2px 8px;border-radius:2px;font-weight:500}
+.lb-head .sub{color:var(--dim);font-size:13px;margin-top:4px}
+.lb-acts{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.lb-tools{display:flex;gap:8px;align-items:center;margin-bottom:12px}
+.lb-tools input{flex:1;max-width:420px}
+.lb-seg{display:flex}
+.lb-seg button{border-radius:0;padding:6px 10px}
+.lb-seg button:first-child{border-radius:3px 0 0 3px}.lb-seg button:last-child{border-radius:0 3px 3px 0}
+.lb-seg button.on{background:var(--hi);color:var(--k08131d)}
+.lb-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
+.lb-card{background:rgba(var(--r15-26-38),.85);border-radius:4px;overflow:hidden;position:relative;border:1px solid rgba(var(--r42-63-90),.5);transition:transform .12s,box-shadow .12s}
+.lb-card:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,0,0,.45);border-color:var(--k3d5a80)}
+.lb-card .im{height:118px;background:var(--k0f1a26) center/cover no-repeat;position:relative;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:700;color:rgba(255,255,255,.85)}
+.lb-card .st{position:absolute;left:6px;top:6px;display:flex;gap:4px}
+.lb-card .st span{font-size:10px;padding:2px 6px;border-radius:2px;background:rgba(0,0,0,.7);color:var(--kdfe8f2)}
+.lb-card .st .ok{background:rgba(92,126,16,.95);color:#fff}
+.lb-card .st .no{background:rgba(122,46,31,.95);color:#fff}
+.lb-card .st .loc{background:rgba(106,74,18,.95);color:#fff}
+.lb-card .st .up{background:rgba(var(--r76-110-245),.95);color:#fff}
+.lb-card .fv{position:absolute;right:6px;top:6px;background:rgba(0,0,0,.6);border-radius:50%;width:26px;height:26px;padding:0;font-size:13px;color:#fff}
+.lb-card .fv.on{color:#ff6b8a}
+.lb-card .t{padding:8px 10px}
+.lb-card .t .n{color:#fff;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer}
+.lb-card .t .m{color:var(--dim);font-size:11px;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lb-card .ac{display:flex;gap:4px;padding:0 10px 10px}
+.lb-card .ac button{flex:1;padding:4px 6px;font-size:11px}
+.lb-list .lb-card{display:flex;align-items:center}
+.lb-list{grid-template-columns:1fr !important;gap:4px !important}
+.lb-list .lb-card .im{width:128px;height:72px;flex:none;font-size:20px}
+.lb-list .lb-card .t{flex:1;min-width:0}
+.lb-list .lb-card .ac{padding:0 10px;flex:none}
+.lb-list .lb-card .ac button{flex:none}
+.lb-list .lb-card .fv{position:static;margin-right:6px;background:var(--panel2)}
+.lb-pop{position:fixed;z-index:30;background:var(--k1b2838);border:1px solid var(--line);border-radius:4px;padding:8px;box-shadow:0 10px 30px rgba(0,0,0,.6);min-width:220px}
+.lb-pop label{display:flex;gap:8px;align-items:center;padding:5px 6px;border-radius:2px;cursor:pointer}
+.lb-pop label:hover{background:var(--panel2)}
+.lb-empty{color:var(--dim);padding:40px;text-align:center;background:rgba(var(--r23-29-37),.6);border-radius:4px}
+
+#updBar{display:none;position:sticky;top:56px;z-index:6;background:linear-gradient(90deg,#1f6f3a,#2d8a4a);color:#fff;padding:10px 20px;align-items:center;gap:14px;box-shadow:0 4px 14px rgba(0,0,0,.4)}
+#updBar.on{display:flex}
+#updBar b{font-size:14px}
+#updBar span{opacity:.9;font-size:13px;flex:1}
+#updBar button{background:#fff;color:#1f5f33;font-weight:600;padding:6px 16px}
+
+#partyview{display:none}
+#partyview.on{display:block}
+#navPtDot{display:none;width:8px;height:8px;border-radius:50%;background:#5ba32b;margin-left:6px;vertical-align:middle}
+.pv-top{display:flex;align-items:flex-end;gap:16px;margin-bottom:14px}
+.pv-top>div{flex:1}
+.pv-top h2{margin:0;font-size:28px;color:#fff}
+.pv-name{display:flex;align-items:center;gap:8px}
+.pv-choose{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.pv-card{background:linear-gradient(160deg,rgba(var(--r30-52-82),.95),rgba(var(--r23-29-37),.95));border:1px solid var(--k2a3f5a);border-radius:6px;padding:28px;text-align:center}
+.pv-card h3{margin:6px 0;font-size:22px;color:#fff}
+.pv-ic{font-size:40px}
+.pv-big{font-size:17px;padding:12px 30px;margin-top:8px}
+.pv-addr{display:block;margin:10px auto 0;width:min(320px,100%);text-align:center;font:600 18px Consolas,monospace;padding:10px}
+.pv-hero{display:grid;grid-template-columns:280px 1fr auto;gap:20px;align-items:center;background:linear-gradient(100deg,rgba(var(--r30-52-82),.95),rgba(var(--r23-29-37),.9));border:1px solid var(--k2a3f5a);border-radius:6px;padding:16px;margin-bottom:16px}
+.pv-heroimg{width:280px;height:158px;border-radius:4px;background:linear-gradient(135deg,var(--k1e3452),var(--k0f1a26)) center/cover no-repeat;box-shadow:0 6px 20px rgba(0,0,0,.5)}
+.pv-kicker{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--hi)}
+.pv-herotx h2{margin:2px 0 6px;font-size:26px;color:#fff}
+.pv-addrrow{margin-top:10px;display:flex;align-items:center;gap:10px}
+.pt-addr{font:600 18px Consolas,monospace;color:#fff;background:var(--k0f1a26);border:1px solid var(--line);padding:4px 10px;border-radius:3px}
+.pv-heroact{display:flex;flex-direction:column;gap:8px;align-items:stretch;min-width:200px}
+.pv-launch{font-size:20px;padding:14px 28px;box-shadow:0 4px 18px rgba(117,176,34,.35)}
+.pv-launch:disabled{box-shadow:none}
+.pv-toggle{display:flex;align-items:center;gap:8px}
+.pv-h{font-size:16px;color:#fff;margin:6px 0 10px}
+.pt-chip.host{background:#6a4a12;color:#ffd98a}
+.pv-members{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px}
+.pv-mem{display:flex;align-items:center;gap:12px;background:rgba(var(--r15-26-38),.85);border:1px solid rgba(var(--r42-63-90),.6);border-radius:6px;padding:12px}
+.pv-av{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;flex:none}
+.pv-mem .n{color:#fff;font-size:15px}
+.pv-mem .chips{display:flex;gap:4px;flex-wrap:wrap;margin-top:4px}
+.pv-mem .p{font-size:11px;color:var(--dim);margin-top:4px}
+.pt-chip{font-size:11px;padding:2px 8px;border-radius:2px;background:var(--tag);color:var(--kdfe8f2);white-space:nowrap}
+.pt-chip.ok{background:var(--good);color:#fff}
+.pt-chip.bad{background:#7a2e1f;color:#fff}
+.pt-chip.warn{background:#6a4a12;color:#fff}
+.pv-cols{display:grid;grid-template-columns:1.6fr 1fr;gap:16px}
+.pv-panel{background:rgba(var(--r23-29-37),.88);border:1px solid rgba(var(--r42-63-90),.6);border-radius:6px;padding:14px}
+.pv-panelhead{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.pv-list{display:flex;flex-direction:column;gap:4px;max-height:55vh;overflow:auto}
+.pv-row{display:flex;align-items:center;gap:10px;background:rgba(var(--r15-26-38),.6);padding:6px 10px 6px 6px;border-radius:3px}
+.pv-row .n{color:#fff;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pv-row .m{font-size:11px;color:var(--dim);white-space:nowrap}
+.pt-bar{height:8px;background:var(--k0f1a26);border-radius:4px;overflow:hidden;margin-top:8px;max-width:420px}
+.pt-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--k47bfff),var(--k1a44c2));width:0}
+.pt-err{color:#ff8a7a;font-size:13px;margin-top:10px}
+.snd-row{display:flex;align-items:center;gap:10px}.snd-row label{display:flex;gap:6px;align-items:center;cursor:pointer}.snd-row input[type=range]{flex:1;accent-color:var(--hi)}
+</style>
+</head>
+<body>
+<header>
+  <div class="navbtns"><button id="navBack" title="Back (mouse back button, Alt+Left)">←</button><button id="navFwd" title="Forward">→</button></div>
+  <h1>Reforger Workshop</h1>
+  <div class="sync">
+    <span id="syncmsg"></span>
+    <div class="bar" id="syncbar"><i></i></div>
+    <span id="hdrgame" title="What the game will do with your playlist"></span>
+    <button id="launchbtn" class="primary" style="padding:4px 12px;display:none">▶ Launch Arma</button>
+    <button id="closegamebtn" class="danger" style="padding:4px 12px;display:none" title="Shut Arma down right now, like Steam's Stop button">■ Close Arma</button>
+    <button id="dlbtn" style="display:none"></button>
+    <span id="dlmsg" style="font-size:12px;color:var(--hi);cursor:pointer" title="Open Downloads"></span>
+    <label class="hdr-pl" title="New mods you add go to this playlist">Adding to <select id="plsel"></select></label>
+    <div class="gear">
+      <button id="gearbtn" title="Settings">⚙</button>
+      <div class="gearmenu" id="gearmenu">
+        <div class="gm-row" id="dbcount"></div>
+        <div class="gm-row" id="enrichmsg"></div>
+        <button id="importbtn" title="Put everything downloaded in the game's addons folder onto the active playlist">Import installed mods into playlist</button>
+        <button id="syncbtn">Check for new and updated mods</button>
+        <button id="fullbtn">Rebuild the full mod list</button>
+        <div class="gm-row snd-row"><label>Theme <select id="themeSel"><option value="xbox">Xbox</option><option value="x360">Xbox 360</option><option value="steam">Steam</option></select></label></div>
+        <div class="gm-row snd-row"><label title="Xbox and Xbox 360 themes each have their own dashboard sounds. Steam is silent."><input type="checkbox" id="sndOn"> Xbox sounds</label><input type="range" id="sndVol" min="0" max="100" step="5" title="Volume"></div>
+        <div class="gm-row" id="listpath"></div>
+      </div>
+    </div>
+  </div>
+</header>
+<div id="updBar"><b>⬆ Update available</b><span id="updTxt"></span><button id="updGo">Update &amp; restart</button></div>
+
+<div class="wrap">
+  <div class="banner">
+    <div class="banner-text">
+      <b>Discover the best community content</b>
+      <p>Every mod on the Arma Reforger workshop, sorted and filtered properly. Add what you want to a playlist and install it in game in one click.</p>
+    </div>
+  </div>
+  <nav class="subnav" id="nav">
+    <button data-view="home" class="on">Home</button>
+    <div class="dd"><button data-view="browse">Browse ▾</button><div class="ddmenu" id="ddBrowse"></div></div>
+    <button data-view="library">My Mods</button>
+    <button data-view="play">▶ Play</button>
+    <button data-view="downloads">Downloads<span id="navDlCount"></span></button>
+    <button data-view="party">👥 Party<span id="navPtDot"></span></button>
+  </nav>
+
+  <div id="home">
+    <div class="home-box">
+      <div class="home-head"><div><h2>Items</h2><small>Best of what was posted in the past week</small></div><button class="outline" id="homeViewAll">View All</button></div>
+      <div class="carousel">
+        <button class="car-btn" id="carPrev">‹</button>
+        <div class="car-track" id="carTrack"></div>
+        <button class="car-btn" id="carNext">›</button>
+      </div>
+    </div>
+    <div class="home-box" id="updbox" style="display:none">
+      <div class="home-head"><div><h2>Updates to your installed mods</h2><small>Most recently updated first</small></div><button class="outline" id="updAll">View All</button></div>
+      <div class="home-list" id="updlist"></div>
+    </div>
+    <div class="home-grid">
+    <aside class="home-side">
+      <div class="search"><input type="search" id="homeQ" placeholder="Search Reforger workshop"></div>
+      <h3>Categories</h3>
+      <div id="homeFacets"></div>
+    </aside>
+    <div class="home-box" style="margin-bottom:0">
+      <div class="home-tabs" id="homeTabs">
+        <button data-sort="popular" data-frame="3months" class="on">Most Popular</button>
+        <button data-sort="subscribers" data-frame="all">Most Subscribed</button>
+        <button data-sort="updated" data-frame="all">Last Updated</button>
+        <button data-sort="recent" data-frame="all">New</button>
+      </div>
+      <small class="home-sub" id="homeSub">Best rated of the mods posted in the past three months</small>
+      <div class="home-list" id="homeList"></div>
+      <div style="text-align:right;margin-top:8px"><button class="outline" id="homeMore">View All</button></div>
+      <div class="home-tabs" style="margin-top:22px"><button class="on">Most Required by Other Items</button></div>
+      <small class="home-sub">Mods other mods depend on: the libraries and cores worth having</small>
+      <div class="home-list" id="reqlist"></div>
+    </div>
+    </div>
+  </div>
+  <div id="play">
+    <div id="pyMain">
+    <div class="py-hero">
+      <div class="py-heroimg" id="pyHeroImg">▶</div>
+      <div class="py-herot">
+        <h2 id="pyHeroTitle">Pick a scenario</h2>
+        <div class="sub" id="pyHeroSub">Tick mods below, then choose where to play.</div>
+        <div class="py-heroopts">
+          <label><input type="checkbox" id="pyLoad"> Continue latest save for this scenario</label>
+          <label>Extra launch parameters <input id="pyExtra" placeholder="optional, e.g. -maxFPS 144"></label>
+        </div>
+        <div class="py-cmd" id="pyCmd"></div>
+        <div class="py-msg" id="pyMsg"></div>
+      </div>
+      <button class="primary py-launch" id="pyGo">▶ Launch</button>
+    </div>
+    <div class="py-presets">
+      <b style="color:#fff">Preset</b>
+      <select id="pyPreset"><option value="">(none)</option></select>
+      <button id="pyPresetSave">Save as preset</button>
+      <button id="pyPresetDel" class="danger">Delete preset</button>
+      <button id="pyFromPl" title="Tick every installed mod on the playlist chosen above (Adding to…)">Use playlist mods</button>
+      <button id="pyNone">Untick all</button>
+      <span class="hint" id="pyGame"></span>
+    </div>
+    <div class="py-grid">
+      <div class="py-box">
+        <h3>Your mods <small id="pyCount"></small></h3>
+        <div class="py-tools">
+          <input type="search" id="pyQ" placeholder="Filter mods">
+          <div class="py-chips" id="pyFilt"><button data-f="all" class="on">All</button><button data-f="sel">Ticked</button><button data-f="local">Local</button><button data-f="workshop">Workshop</button></div>
+        </div>
+        <div class="py-mods" id="pyMods"></div>
+      </div>
+      <div>
+        <div class="py-box">
+          <h3>Scenario</h3>
+          <div class="py-scen" id="pyScen"></div>
+          <details class="py-van"><summary>Base game scenarios</summary><div class="py-scen" id="pyVan"></div></details>
+        </div>
+        <div class="py-box" style="margin-top:16px">
+          <h3>Load order <small>dependencies are added and put first automatically</small></h3>
+          <div class="py-order" id="pyOrder"></div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+  <div id="downloads">
+    <div class="dl-head">
+      <div class="dl-stat net">Network<b id="dlNet">0 B/s</b></div>
+      <div class="dl-stat net">Peak<b id="dlPeak">0 B/s</b></div>
+      <div class="dl-stat disk">Downloaded<b id="dlTotal">0 MB</b></div>
+      <svg class="dl-graph" id="dlGraph" viewBox="0 0 300 60" preserveAspectRatio="none"><polyline id="dlLine" fill="rgba(var(--r76-110-245),.25)" stroke="var(--k4c6ef5)" stroke-width="1.5" points=""/></svg>
+      <button id="dlCheckUpd" title="Mods update on their own every couple of minutes; this checks right now">Check for updates</button>
+      <button id="dlStopAll" class="danger" style="display:none">Stop</button>
+    </div>
+    <div id="dlActiveBox"></div>
+    <div class="dl-sec"><h3>Up Next <span id="dlQn">(0)</span></h3><hr></div>
+    <div id="dlQueue"></div>
+    <div class="dl-sec"><h3>Completed <span id="dlCn">(0)</span></h3><hr><button id="dlClear">Clear All</button></div>
+    <div id="dlDone"></div>
+    <div class="py-msg err" id="dlErr"></div>
+  </div>
+  <div id="library">
+    <div class="lb-grid">
+      <aside class="lb-side" id="lbSide"></aside>
+      <section>
+        <div class="lb-head"><div class="ti"><h2 id="lbTitle">Installed on this PC</h2><div class="sub" id="lbSub"></div></div><div class="lb-acts" id="lbActs"></div></div>
+        <div class="lb-tools">
+          <input type="search" id="lbQ" placeholder="Search your mods">
+          <select id="lbSort"><option value="name">Name</option><option value="size">Size</option><option value="updated">Recently updated</option><option value="rating">Rating</option></select>
+          <div class="lb-seg" id="lbShow"><button data-s="all" class="on">All</button><button data-s="inst">On PC</button><button data-s="miss">Not downloaded</button></div>
+          <span style="flex:1"></span>
+          <div class="lb-seg" id="lbView"><button data-v="grid" class="on" title="Grid">▦</button><button data-v="list" title="List">☰</button></div>
+        </div>
+        <div class="lb-cards" id="lbCards"></div>
+      </section>
+    </div>
+  </div>
+  <div id="partyview">
+    <div class="pv-top">
+      <div><h2>Party</h2><div class="hint">Play together over Radmin. The host picks the mods and scenario in the Play tab; everyone else gets them synced.</div></div>
+      <label class="pv-name">Your name <input id="ptName"></label>
+    </div>
+    <div id="ptIdle" class="pv-choose">
+      <div class="pv-card">
+        <div class="pv-ic">🏠</div><h3>Host a party</h3>
+        <p id="ptHostInfo" class="hint">Uses what you set up in the Play tab.</p>
+        <button class="primary pv-big" id="ptHost">Host a party</button>
+        <div class="hint" style="margin-top:8px">Friends join with your Radmin address: <b id="ptMyRadmin" style="color:#fff"></b></div>
+      </div>
+      <div class="pv-card">
+        <div class="pv-ic">🔗</div><h3>Join a party</h3>
+        <p class="hint">Paste your friend's Radmin address (26.x.x.x).</p>
+        <input id="ptAddr" placeholder="e.g. 26.160.80.55" class="pv-addr">
+        <button class="primary pv-big" id="ptJoin">Join party</button>
+      </div>
+    </div>
+    <div id="ptHosting" style="display:none">
+      <div class="pv-hero">
+        <div class="pv-heroimg" id="ptHeroImg"></div>
+        <div class="pv-herotx">
+          <div class="pv-kicker">You are hosting</div>
+          <h2 id="ptHeroTitle">Your party</h2>
+          <div class="hint" id="ptSetup"></div>
+          <div class="pv-addrrow">Friends join with <span class="pt-addr" id="ptMyAddr"></span><button id="ptCopy">Copy</button></div>
+        </div>
+        <div class="pv-heroact"><button class="primary pv-launch" id="ptLaunch">▶ Launch party</button><button class="danger" id="ptEnd">End party</button></div>
+      </div>
+      <div class="pv-cols">
+        <div class="pv-panel">
+          <div class="pv-panelhead"><h3 class="pv-h" style="margin:0">Mods for this party</h3><span style="flex:1"></span><span class="hint" id="ptHModsInfo"></span></div>
+          <div class="pv-list" id="ptHMods"></div>
+        </div>
+        <div class="pv-panel"><h3 class="pv-h" style="margin-top:0">In the party</h3><div class="pv-members" id="ptMembers"></div></div>
+      </div>
+    </div>
+    <div id="ptMember" style="display:none">
+      <div class="pv-hero">
+        <div class="pv-heroimg" id="ptMHeroImg"></div>
+        <div class="pv-herotx">
+          <div class="pv-kicker" id="ptKicker">Party</div>
+          <h2 id="ptTitle">Connecting…</h2>
+          <div class="hint" id="ptSyncTxt"></div>
+          <div class="pt-bar" id="ptBar" style="display:none"><i></i></div>
+        </div>
+        <div class="pv-heroact">
+          <button class="primary pv-launch" id="ptGo">▶ Join game now</button>
+          <label class="pv-toggle" style="display:none"><input type="checkbox" id="ptReady"> Ready</label>
+          <label class="pv-toggle" title="Start your game and connect as soon as the host launches"><input type="checkbox" id="ptAuto"> Join automatically</label>
+          <button class="danger" id="ptLeave">Leave party</button>
+        </div>
+      </div>
+      <div class="pv-cols">
+        <div class="pv-panel">
+          <div class="pv-panelhead"><h3 class="pv-h" style="margin:0">Mods for this party</h3>
+            <span style="flex:1"></span>
+            <button class="primary" id="ptWs" title="Downloads from the Workshop at full speed, in the background, without opening the game">Download Workshop mods</button>
+            <button id="ptSync" title="Copy straight from the host's PC over Radmin: the host's own mods, and anything else still missing">Sync from host</button></div>
+          <div class="pv-list" id="ptCheck"></div>
+        </div>
+        <div class="pv-panel"><h3 class="pv-h" style="margin-top:0">In the party</h3><div class="pv-members" id="ptOthers"></div></div>
+      </div>
+    </div>
+    <div class="pt-err" id="ptErr"></div>
+  </div>
+  <div id="about">
+    <div class="home-box">
+      <h2 style="margin:0 0 10px;color:#fff">About</h2>
+      <p>Reforger Mod Browser is a local, Steam-style front end for the Arma Reforger workshop. It keeps its own copy of the workshop list on your PC (every public mod), refreshed from the Workshop site while it is open, so searching and sorting are instant and the sort orders actually work: rating weighted by votes and downloads, trending by downloads gained, filters that combine.</p>
+      <p><b>Playlists</b> are your mod sets. One is marked <b>in game</b>; it is written to <code id="aboutpath"></code>. The companion in-game mod reads it, downloads what is missing and enables exactly those mods.</p>
+      <p><b>Your Items</b> reads the game's addons folder to show what is installed on this PC.</p>
+      <p class="hint">Data: reforger.armaplatform.com. Ratings, subscribers and downloads are the Workshop's numbers. Trending needs a few days of daily snapshots before it means anything.</p>
+    </div>
+  </div>
+
+  <div class="titlebar"><h2 id="title">Browsing: Items</h2><span class="sub">(Add to a playlist to install in game)</span><span class="matching" id="matching"></span></div>
+  <main>
+    <aside>
+      <div class="search"><input type="search" id="q" placeholder="Search Reforger workshop"><button id="advgear" title="Advanced options">⚙</button></div>
+      <h3>Special filters</h3>
+      <select id="special">
+        <option value="">None</option>
+        <option value="hide">Hide what I have installed</option>
+        <option value="only">Only what I have installed</option>
+        <option value="list">Only the active playlist</option>
+        <option value="favs">Only my favorites</option>
+      </select>
+      <div class="chips" id="chips"></div>
+      <h3>Categories</h3>
+      <div id="facets"></div>
+      <details class="more"><summary>More tags</summary>
+        <input type="search" id="tagq" placeholder="type to find a tag">
+        <div id="tagfacets"></div>
+      </details>
+      <details class="more" id="advbox"><summary>Advanced</summary>
+        <label>Minimum votes <input type="number" id="minvotes" value="0" min="0" step="5"></label>
+        <label>Minimum rating <span id="minratinglbl">0%</span><br><input type="range" id="minrating" min="0" max="100" value="0" style="width:100%"></label>
+        <label>Under <input type="number" id="maxmb" value="" min="0" step="50" placeholder="any"> MB</label>
+      </details>
+      <div style="margin-top:14px;display:flex;gap:6px;flex-wrap:wrap"><button id="datebtn">Filter by Date</button><button id="reset">Reset filters</button></div>
+      <div id="datebox" style="display:none;margin-top:8px">
+        <label>Updated within <select id="fdays"><option value="0">any time</option><option value="1">today</option><option value="7">one week</option><option value="30">thirty days</option><option value="90">three months</option><option value="365">one year</option></select></label>
+        <label>Posted within <select id="cdays"><option value="0">any time</option><option value="1">today</option><option value="7">one week</option><option value="30">thirty days</option><option value="90">three months</option><option value="365">one year</option></select></label>
+      </div>
+      <p class="hint" style="margin-top:14px">Counts are for the whole workshop. Downloads and ratings come from the Workshop site.</p>
+    </aside>
+
+    <section>
+      <div class="ctl">
+        <span class="spacer"></span>
+        <div class="sortbox">
+          <button id="sortbtn">⇅ <span id="sortlbl">Most Popular (Three Months)</span> ▾</button>
+          <div class="sortmenu" id="sortmenu">
+            <div>
+              <h4>Sort order</h4>
+              <label><input type="radio" name="sort" value="popular" checked> Most Popular</label>
+              <label><input type="radio" name="sort" value="trending"> Trending (subscribers gained)</label>
+              <label><input type="radio" name="sort" value="rated"> Top Rated All Time</label>
+              <label><input type="radio" name="sort" value="recent"> Most Recent</label>
+              <label><input type="radio" name="sort" value="updated"> Last Updated</label>
+              <label><input type="radio" name="sort" value="subscribers"> Total Unique Subscribers</label>
+              <label><input type="radio" name="sort" value="size"> Biggest</label>
+              <label><input type="radio" name="sort" value="name"> Name A to Z</label>
+            </div>
+            <div id="frames">
+              <h4>Time frame</h4>
+              <label><input type="radio" name="frame" value="today"> Today</label>
+              <label><input type="radio" name="frame" value="week"> One Week</label>
+              <label><input type="radio" name="frame" value="month"> Thirty Days</label>
+              <label><input type="radio" name="frame" value="3months" checked> Three Months</label>
+              <label><input type="radio" name="frame" value="6months"> Six Months</label>
+              <label><input type="radio" name="frame" value="year"> One Year</label>
+              <label><input type="radio" name="frame" value="all"> All Time</label>
+              <label id="customLbl"><input type="radio" name="frame" value="custom"> Custom range</label>
+            </div>
+            <div class="rangebox" id="rangebox">
+              <div class="rb-row">
+                <label>From <input type="date" id="rgFrom"></label>
+                <label>To <input type="date" id="rgTo"></label>
+                <button class="primary" id="rgGo">Go</button>
+              </div>
+              <div class="rb-row">
+                <button id="rgPrev" title="The chunk before this one">◀</button>
+                <select id="rgChunk">
+                  <option value="w">Week</option><option value="1">Month</option><option value="3">3 Months</option>
+                  <option value="6" selected>6 Months</option><option value="12">Year</option>
+                </select>
+                <button id="rgNext" title="The chunk after this one">▶</button>
+                <span class="hint" id="rgHint">steps back and forth in chunks</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="grid" id="grid"></div>
+      <div class="pager-row"><label class="perpage">Per page: <select id="per"><option>30</option><option selected>50</option><option>100</option></select></label><div class="pager" id="pager"></div></div>
+    </section>
+
+    <div class="list">
+      <h2>Playlist <span id="sidecount" class="total"></span></h2>
+      <div class="hint" id="sidestate"></div>
+      <div class="items" id="sideitems"></div>
+      <div class="foot"><button id="sidemanage">Manage playlists</button></div>
+    </div>
+  </main>
+  <div id="playlists">
+    <div class="pl-grid">
+      <aside class="pl-side">
+        <div class="pl-head"><h3>Your playlists</h3><button class="outline" id="plnew">+ New</button></div>
+        <div id="pllist"></div>
+        <p class="hint">The playlist marked <b>in game</b> is what the companion mod installs and enables when you launch Arma.</p>
+      </aside>
+      <section class="pl-main">
+        <div class="pl-title"><h2 id="plname"></h2><span class="hint" id="plstate"></span></div>
+        <div class="gamebar" id="gamebar"><span class="dot" id="gbdot"></span><span id="gbtext" class="sp"></span><div class="pbar" id="gbbar" style="display:none"><i></i></div><button id="gbapply" title="Ask the game to apply the playlist again, even if nothing changed">Apply again</button></div>
+        <div class="pl-actions">
+          <button class="primary" id="plactivate">Use this playlist in game</button>
+          <button id="plrename">Rename</button><button id="pldup">Duplicate</button><button id="copylist">Copy names</button><button id="plclear">Empty</button><button class="danger" id="pldel">Delete</button>
+        </div>
+        <div class="items" id="listitems"></div>
+        <div id="rembox" style="display:none;margin-top:18px">
+          <h3 style="margin:0 0 4px;color:#fff;font-size:15px">Queued for deletion from this PC</h3>
+          <p class="hint" style="margin:0 0 6px">Arma deletes these the next time it is at the main menu.</p>
+          <div id="remlist"></div>
+        </div>
+      </section>
+    </div>
+  </div>
+  <div id="modpage"></div>
+  <footer class="foot"><span>Reforger Mod Browser</span><span>Data from the Arma Reforger workshop (Bohemia Interactive). Not affiliated with Bohemia Interactive or Valve.</span></footer>
+</div>
+
+<div id="hover"></div>
+<div class="modal" id="modal"><div class="sheet" id="sheet"></div></div>
+<div class="modal" id="depmodal" style="z-index:12"><div class="sheet" id="depsheet" style="width:min(640px,100%)"></div></div>
+
+<script>
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const state = { view:'browse', sort:'popular', frame:'3months', tags:new Set(), notTags:new Set(), gv:'', page:1, q:'', pid:0, active:0 };
+const FRAME_LABEL = {today:'Today', week:'One Week', month:'Thirty Days', '3months':'Three Months', '6months':'Six Months', year:'One Year', all:'All Time'};
+const SORT_LABEL = {popular:'Most Popular', trending:'Trending', rated:'Top Rated All Time', recent:'Most Recent', updated:'Last Updated', subscribers:'Total Unique Subscribers', size:'Biggest', name:'Name A to Z'};
+const FRAMED = new Set(['popular','trending']);
+// custom From/To range: every sort except Trending (no history that far back)
+const RANGED = s => s !== 'trending';
+const ymd = d => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+const parseYmd = s => { const [y,m,d] = (s||'').split('-').map(Number); return y ? new Date(y, m-1, d) : null; };
+const niceDate = s => { const d=parseYmd(s); return d ? d.toLocaleDateString('en-US',{month:'short', day:'numeric', year:'numeric'}).replace(',','') : ''; };
+function shiftChunk(d, chunk, dir){ const x=new Date(d); if (chunk==='w') x.setDate(x.getDate()+7*dir); else x.setMonth(x.getMonth()+Number(chunk)*dir); return x; }
+const fmtSize = b => b>=1<<30 ? (b/(1<<30)).toFixed(2)+' GB' : b>=1<<20 ? (b/(1<<20)).toFixed(1)+' MB' : (b/1024).toFixed(0)+' KB';
+const fmtN = n => n>=1e6 ? (n/1e6).toFixed(1)+'M' : n>=1e3 ? (n/1e3).toFixed(1)+'k' : String(n||0);
+const ago = iso => { if(!iso) return ''; const d=(Date.now()-Date.parse(iso))/864e5; if(d<1) return 'today'; if(d<30) return Math.floor(d)+'d ago'; if(d<365) return Math.floor(d/30)+'mo ago'; return (d/365).toFixed(1)+'y ago'; };
+const esc = s => (s||'').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const CATS = [['SCENARIOS_SP','Scenarios (singleplayer)'],['SCENARIOS_MP','Scenarios (multiplayer)'],['COMPOSITIONS','Compositions'],['TERRAINS','Terrains'],['WEAPONS','Weapons'],['VEHICLES','Vehicles'],['CHARACTERS','Characters'],['PROPS','Props'],['STRUCTURES','Structures'],['EFFECTS','Effects'],['SOUNDS','Sounds'],['AI','AI'],['SYSTEMS','Systems'],['UI','UI'],['MISC','Misc']];
+const CATSET = new Set(CATS.map(c=>c[0]));
+const nice = t => { const c = CATS.find(x=>x[0]===t); if (c) return c[1]; return t.toLowerCase().replace(/_/g,' '); };
+// ---------------------------------------------------------------- Xbox 360 sounds
+const SND = (() => {
+  const cache = {};
+  // the same moments on the original Xbox dashboard (the 360 names are the base set)
+  const OG = { 'startup':'og-main-in', 'select-a':'og-select', 'select-a-alt':'og-controller', 'select-b':'og-delete', 'select':'og-slot',
+    'select-one':'og-parent', 'back':'og-back', 'back-2':'og-back', 'page-left':'og-menu-back', 'page-right':'og-menu-fwd',
+    'focus':'og-scroll', 'inactive':'og-error', 'ui-4':'og-error', 'download-complete':'og-complete', 'achievement':'og-complete',
+    'bing':'og-cd', 'party-invite':'og-cd', 'welcome':'og-main-in', 'hud-open':'og-info-in', 'hud-close':'og-info-out',
+    'unfold':'og-sub-in', 'fold':'og-sub-out', 'transition':'og-games', 'login':'og-games', 'rare-achievement-fade':'og-games' };
+  let on = true, vol = 0.6;
+  try { on = localStorage.getItem('sndOn') !== '0'; const v = localStorage.getItem('sndVol'); if (v !== null) vol = Number(v)/100; } catch(e){}
+  const play = (name, v) => {
+    const theme = document.documentElement.dataset.theme;
+    if (!on || !name || (theme !== 'xbox' && theme !== 'x360')) return;   // each Xbox theme has its own sounds, Steam is silent
+    if (theme === 'xbox') { name = OG[name]; if (!name) return; }        // original Xbox dashboard sounds
+    try {
+      const base = cache[name] || (cache[name] = new Audio('/snd/' + name + '.mp3'));
+      const a = base.paused ? base : base.cloneNode();   // overlapping clicks each get their own voice
+      a.volume = Math.max(0, Math.min(1, vol * (v || 1)));
+      a.currentTime = 0; a.play().catch(()=>{});
+    } catch(e){}
+  };
+  return { play, get on(){ return on; }, set on(x){ on = x; try{ localStorage.setItem('sndOn', x?'1':'0'); }catch(e){} },
+           get vol(){ return vol; }, set vol(x){ vol = x; try{ localStorage.setItem('sndVol', String(Math.round(x*100))); }catch(e){} } };
+})();
+const api = (p, body) => fetch(p, body?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}:{}).then(r=>r.json());
+function stars(r, votes){
+  if (!votes) return '<span class="stars none">☆☆☆☆☆</span>';
+  const n = Math.round(r*5); return `<span class="stars">${'★'.repeat(n)}${'☆'.repeat(5-n)}</span>`;
+}
+
+function params(){
+  const p = new URLSearchParams();
+  const custom = state.frame==='custom' && state.range && RANGED(state.sort);
+  p.set('sort', state.sort); p.set('frame', state.frame==='custom' ? 'all' : state.frame); p.set('page', state.page); p.set('per', $('#per').value);
+  if (custom){ if (state.range.from) p.set('from', state.range.from); if (state.range.to) p.set('to', state.range.to); }
+  if (state.q) p.set('q', state.q);
+  if (state.tags.size) p.set('tags', [...state.tags].join(','));
+  if (state.notTags.size) p.set('not_tags', [...state.notTags].join(','));
+  if (state.gv) p.set('game_version', state.gv);
+  p.set('min_votes', $('#minvotes').value||0);
+  p.set('min_rating', ($('#minrating').value||0)/100);
+  if ($('#maxmb').value) p.set('max_mb', $('#maxmb').value);
+  if ($('#fdays').value!=='0') p.set('days', $('#fdays').value);
+  if ($('#cdays').value!=='0') p.set('created_days', $('#cdays').value);
+  const sp = $('#special').value;
+  if (state.view==='installed' || sp==='only') p.set('only_installed','1');
+  else if (sp==='list') { p.set('only_listed','1'); p.set('playlist', state.pid||0); }
+  else if (state.view==='favs' || sp==='favs') p.set('only_favs','1');
+  else if (sp==='hide') p.set('hide_installed','1');
+  return p.toString();
+}
+
+function sortLabel(){
+  if (state.frame==='custom' && state.range && RANGED(state.sort))
+    return `${SORT_LABEL[state.sort]} (${niceDate(state.range.from)||'start'} – ${niceDate(state.range.to)||'today'})`;
+  return SORT_LABEL[state.sort] + (FRAMED.has(state.sort) && state.frame!=='custom' ? ` (${FRAME_LABEL[state.frame]})` : '');
+}
+
+let _loadSeq = 0;
+async function load(){
+  $('#sortlbl').textContent = sortLabel();
+  $$('#frames label').forEach(l => l.classList.toggle('dis', l.id==='customLbl' ? !RANGED(state.sort) : !FRAMED.has(state.sort)));
+  $('#rangebox').classList.toggle('dis', !RANGED(state.sort));
+  const seq = ++_loadSeq;
+  $('#grid').style.opacity = '.5';
+  const d = await api('/api/mods?'+params());
+  if (seq !== _loadSeq) return;   // a newer request is already on its way
+  $('#grid').style.opacity = '';
+  $('#matching').textContent = d.total.toLocaleString()+(d.total===1?' entry':' entries')+' matching filters';
+  hideHover();
+  const g = $('#grid'); g.innerHTML = '';
+  if (!d.rows.length) g.innerHTML = '<div class="empty">Nothing matches. If the database is still filling, give it a minute.</div>';
+  for (const m of d.rows){
+    const el = document.createElement('div');
+    el.className = 'card'+(m.listed?' listed':'');
+    const gain = (state.sort==='trending' && m.gain>0) ? `<span class="gain">+${fmtN(m.gain)} subs</span>` : '';
+    el.innerHTML = `
+      <div class="img" style="background-image:url('${esc(m.thumb)}')"></div>
+      <div class="meta">
+        ${stars(m.rating, m.votes)}<span class="votes">${m.votes?fmtN(m.votes)+' ratings':'no ratings'}</span>
+        <div class="name" title="${esc(m.name)}">${esc(m.name)}</div>
+        <div class="by">by ${esc(m.author)}</div>
+        <div class="num"><span><b>${m.downloads!=null?fmtN(m.downloads)+'</b> downloads':fmtN(m.subscribers)+'</b> subs'}</span><span>${fmtSize(m.size)}</span><span>${ago(m.updated_at)}</span>${gain}</div>
+        <div class="tags">${(m.tags||'').split(',').filter(Boolean).slice(0,4).map(t=>`<span class="tag">${esc(nice(t))}</span>`).join('')}</div>
+      </div>
+      <button class="add" title="${m.listed?'In your playlist (click to remove)':'Add to playlist'}">${m.listed?'✓':'+'}</button>
+      <button class="fav" title="favorite">${m.fav?'♥':'♡'}</button>
+      ${m.installed?'<span class="badge">✓ installed</span>':''}
+      ${m.installed?`<button class="del" title="Delete this mod from your PC (done by the game)">${isPendingRemoval(m.id)?'⌛ deleting':'🗑 uninstall'}</button>`:''}`;
+    wireCard(el, m);
+    g.appendChild(el);
+  }
+  const pages = Math.max(1, Math.ceil(d.total/d.per));
+  const pg = $('#pager'); pg.innerHTML = '';
+  const go = p => { state.page=Math.min(Math.max(1,p),pages); history.pushState({kind:'view', view:state.view, page:state.page}, '', '#/'+state.view+'/p'+state.page); load(); window.scrollTo(0,0); };
+  const mk = (t, p, dis) => { const b=document.createElement('button'); b.textContent=t; b.disabled=dis; b.onclick=()=>go(p); return b; };
+  pg.appendChild(mk('←', state.page-1, state.page<=1));
+  const set = new Set([1,2,3,state.page-1,state.page,state.page+1,pages].filter(x=>x>=1&&x<=pages));
+  let last=0;
+  for (const p of [...set].sort((a,b)=>a-b)){
+    if (p-last>1){ const s=document.createElement('span'); s.textContent='…'; pg.appendChild(s); }
+    const s=document.createElement('button'); s.className='pg'+(p===state.page?' on':''); s.textContent=p.toLocaleString(); s.onclick=()=>go(p); pg.appendChild(s); last=p;
+  }
+  pg.appendChild(mk('→', state.page+1, state.page>=pages));
+}
+
+async function loadFacets(){
+  const f = await api('/api/facets');
+  $('#dbcount').textContent = f.total.toLocaleString()+' mods in the local list · '+f.installed+' installed on this PC';
+  const counts = Object.fromEntries(f.tags.map(t=>[t.tag,t.count]));
+  const mkFacet = (tag, label, count) => {
+    const on = state.tags.has(tag), off = state.notTags.has(tag);
+    const el = document.createElement('div');
+    el.className='facet'+(off?' dis':'');
+    el.innerHTML = `<span class="pm"><button class="${on?'on':''}" title="include">+</button><button class="${off?'off':''}" title="exclude">−</button></span><span class="n" title="${esc(tag)}">${esc(label)}</span><span class="c">${count!=null?'('+count.toLocaleString()+')':''}</span>`;
+    const [inc, exc] = el.querySelectorAll('button');
+    inc.onclick = () => { on?state.tags.delete(tag):state.tags.add(tag); state.notTags.delete(tag); refresh(); };
+    exc.onclick = () => { off?state.notTags.delete(tag):state.notTags.add(tag); state.tags.delete(tag); refresh(); };
+    el.querySelector('.n').onclick = inc.onclick;
+    return el;
+  };
+  const box = $('#facets'); box.innerHTML='';
+  for (const [tag,label] of CATS) if (counts[tag]) box.appendChild(mkFacet(tag, label, counts[tag]));
+  window._tags = f.tags.filter(t=>!CATSET.has(t.tag));
+  renderTagSearch();
+  const dd = $('#ddBrowse'); dd.innerHTML=`<div class="ddcol"><h5>Items</h5>
+    <a href="#" data-view="browse" data-sort="popular" data-frame="3months">Most Popular</a>
+    <a href="#" data-view="browse" data-sort="rated" data-frame="all">Top Rated All Time</a>
+    <a href="#" data-view="browse" data-sort="recent" data-frame="all">Most Recent</a>
+    <a href="#" data-view="browse" data-sort="updated" data-frame="all">Last Updated</a>
+    <a href="#" data-view="browse" data-sort="trending" data-frame="month">Trending</a></div>`;
+  const hf = $('#homeFacets'); hf.innerHTML='';
+  for (const [tag,label] of CATS) if (counts[tag]){
+    const el=document.createElement('div'); el.className='hf';
+    el.innerHTML=`${esc(label)}<span>(${counts[tag].toLocaleString()})</span>`;
+    el.onclick=()=>{ state.tags.clear(); state.notTags.clear(); state.tags.add(tag); goBrowse('popular','all'); };
+    hf.appendChild(el);
+  }
+  const chips = $('#chips'); chips.innerHTML='';
+  for (const t of state.tags){ const c=document.createElement('span'); c.className='chip'; c.textContent='+ '+nice(t); c.onclick=()=>{state.tags.delete(t);refresh();}; chips.appendChild(c); }
+  for (const t of state.notTags){ const c=document.createElement('span'); c.className='chip no'; c.textContent='− '+nice(t); c.onclick=()=>{state.notTags.delete(t);refresh();}; chips.appendChild(c); }
+  if (f.history_days < 2 && state.sort==='trending') $('#syncmsg').textContent = 'trending needs a few days of snapshots; showing popular order until then';
+}
+function renderTagSearch(){
+  const q = ($('#tagq').value||'').toLowerCase().trim();
+  const box = $('#tagfacets'); box.innerHTML='';
+  const list = (window._tags||[]).filter(t => !q || t.tag.toLowerCase().includes(q) || state.tags.has(t.tag) || state.notTags.has(t.tag)).slice(0, q?60:25);
+  for (const t of list){
+    const on = state.tags.has(t.tag), off = state.notTags.has(t.tag);
+    const el = document.createElement('div'); el.className='facet'+(off?' dis':'');
+    el.innerHTML = `<span class="pm"><button class="${on?'on':''}">+</button><button class="${off?'off':''}">−</button></span><span class="n">${esc(nice(t.tag))}</span><span class="c">(${t.count.toLocaleString()})</span>`;
+    const [inc, exc] = el.querySelectorAll('button');
+    inc.onclick = () => { on?state.tags.delete(t.tag):state.tags.add(t.tag); state.notTags.delete(t.tag); refresh(); };
+    exc.onclick = () => { off?state.notTags.delete(t.tag):state.notTags.add(t.tag); state.tags.delete(t.tag); refresh(); };
+    el.querySelector('.n').onclick = inc.onclick;
+    box.appendChild(el);
+  }
+}
+$('#tagq').oninput = renderTagSearch;
+function refresh(){ state.page=1; loadFacets(); load(); }
+
+async function toggleList(id, listed){
+  SND.play(listed ? 'select-b' : 'select-a-alt');
+  if (listed){
+    await api('/api/playlist/remove', {id, pid: state.pid});
+    await Promise.all([loadList(), reloadView()]);
+    return;
+  }
+  // required items, the Steam way
+  const r = await api('/api/deps/'+id+'?pid='+(state.pid||0));
+  const missing = (r.deps||[]).filter(d => !d.in_playlist);
+  if (!missing.length){
+    await api('/api/playlist/add', {id, pid: state.pid});
+    await Promise.all([loadList(), reloadView()]);
+    return;
+  }
+  const size = missing.reduce((a,d)=>a+(d.size||0),0);
+  const m = $('#depmodal'); m.classList.add('on');
+  $('#depsheet').innerHTML = `
+    <h2>Additional Required Items</h2>
+    <p>This item requires the following other items to work. Click one to read about it.</p>
+    <div class="deplist">${missing.map(d=>`<div class="dep" data-id="${esc(d.id)}"><img src="${esc(d.thumb||'')}" alt=""><span>${esc(d.name)}</span><small>${d.installed?'installed · ':''}${fmtSize(d.size||0)}</small></div>`).join('')}</div>
+    <div class="actions">
+      <button class="primary" id="depJust">Add just this item</button>
+      <button class="primary" id="depAll" style="background:linear-gradient(90deg,var(--hi),#2d6fa8)">Add all (${missing.length+1} items, ${fmtSize(size)})</button>
+      <button id="depCancel">Cancel</button>
+    </div>`;
+  $('#depJust').onclick = async () => { m.classList.remove('on'); await api('/api/playlist/add', {id, pid: state.pid}); await Promise.all([loadList(), reloadView()]); };
+  $('#depAll').onclick = async () => { m.classList.remove('on'); await api('/api/playlist/add', {id, pid: state.pid, also: missing.map(d=>d.id)}); await Promise.all([loadList(), reloadView()]); };
+  $('#depCancel').onclick = () => m.classList.remove('on');
+  $('#depsheet').querySelectorAll('.dep').forEach(el => el.onclick = () => openMod(el.dataset.id));
+}
+function reloadView(){ if (state.view==='library') { loadLibrary(); return; } if (state.view==='play') { loadPlay(); return; } if (state.view==='home') loadHome(); else if (state.view==='list') loadList(); else load(); }
+async function toggleFav(id){
+  await api('/api/fav', {id});
+  reloadView();
+}
+
+async function loadPlaylists(){
+  const d = await api('/api/playlists');
+  state.active = d.active;
+  if (!state.pid || !d.playlists.some(p=>p.pid===state.pid)) state.pid = d.active;
+  const sel = $('#plsel'); sel.innerHTML='';
+  for (const p of d.playlists){
+    const o=document.createElement('option'); o.value=p.pid;
+    o.textContent = `${p.name} (${p.n})${p.pid===d.active?' · in game':''}`;
+    if (p.pid===state.pid) o.selected=true;
+    sel.appendChild(o);
+  }
+  const list = $('#pllist'); list.innerHTML='';
+  for (const p of d.playlists){
+    const el=document.createElement('div'); el.className='pl-item'+(p.pid===state.pid?' on':'');
+    el.innerHTML=`<span class="n">${esc(p.name)}</span>${p.pid===d.active?'<span class="live">in game</span>':''}<span class="c">${p.n} · ${fmtSize(p.size||0)}</span>`;
+    el.onclick=()=>{ state.pid=p.pid; loadList(); load(); };
+    list.appendChild(el);
+  }
+  const cur = d.playlists.find(p=>p.pid===state.pid) || {};
+  $('#plname').textContent = cur.name || '';
+  $('#plstate').textContent = state.pid===d.active ? `${cur.n||0} mods, ${fmtSize(cur.size||0)} · this is what the game installs` : `${cur.n||0} mods, ${fmtSize(cur.size||0)}`;
+  $('#plactivate').style.display = state.pid===d.active ? 'none' : '';
+}
+
+async function loadList(){
+  await loadPlaylists();
+  const items = await api('/api/playlist/'+state.pid);
+  const side = $('#sideitems'); side.innerHTML='';
+  $('#sidecount').textContent = items.length ? `(${items.length}, ${fmtSize(items.reduce((a,i)=>a+(i.size||0),0))})` : '';
+  $('#sidestate').textContent = ($('#plname').textContent||'') + (state.pid===state.active ? ' · in game' : '');
+  for (const i of items){
+    const el=document.createElement('div'); el.className='item';
+    el.innerHTML = `<img src="${esc(i.thumb||'')}" alt=""><div class="n" title="${esc(i.name||i.id)}">${esc(i.name||i.id)}<div class="s">${fmtSize(i.size||0)}${i.installed?' · installed':''}</div></div><button title="remove">✕</button>`;
+    el.querySelector('button').onclick = () => toggleList(i.id, true);
+    el.querySelector('.n').onclick = () => openMod(i.id);
+    side.appendChild(el);
+  }
+  if (!items.length) side.innerHTML = '<div class="hint">Empty. Hover a mod and hit "+ Add to playlist".</div>';
+  const box = $('#listitems'); box.innerHTML='';
+  if (!items.length) box.innerHTML = '<div class="hint">Empty. Browse the workshop and hit "+ Add to playlist" on anything you want.</div>';
+  for (const i of items){
+    const el=document.createElement('div'); el.className='item';
+    el.innerHTML = `<img src="${esc(i.thumb||'')}" alt=""><div class="n" title="${esc(i.name||i.id)}">${esc(i.name||i.id)}<div class="s">by ${esc(i.author||'')} · ${fmtSize(i.size||0)}${i.installed?' · installed':' · not downloaded yet'}</div></div>${i.installed?'<button class="unins" title="delete the files from your PC">Uninstall</button>':''}<button title="remove from this playlist">Remove</button>`;
+    el.querySelector('button[title="remove from this playlist"]').onclick = () => toggleList(i.id, true);
+    const un = el.querySelector('.unins'); if (un) un.onclick = () => removeFromPc(i).then(loadList);
+    el.querySelector('.n').onclick = () => openMod(i.id);
+    box.appendChild(el);
+  }
+  window._list = items;
+  renderRemovals();
+}
+async function renderRemovals(){
+  const g = await api('/api/game');
+  window._removals = g.removals.map(r=>r.id);
+  const box = $('#rembox'), l = $('#remlist'); l.innerHTML='';
+  box.style.display = g.removals.length ? '' : 'none';
+  for (const r of g.removals){
+    const el=document.createElement('div'); el.className='rem-item';
+    el.innerHTML = `<img src="${esc(r.thumb||'')}" alt=""><span class="n">${esc(r.name||r.id)}</span><small style="color:var(--dim)">${fmtSize(r.size||0)}</small><button>Keep it</button>`;
+    el.querySelector('button').onclick = async () => { await api('/api/remove_pc/cancel',{id:r.id}); renderRemovals(); };
+    l.appendChild(el);
+  }
+  renderGame(g.game, g.companion);
+}
+function renderGame(g, companion){
+  const dot=$('#gbdot'), txt=$('#gbtext'), bar=$('#gbbar'), hdr=$('#hdrgame');
+  let cls='wait', t='', h='';
+  const pl = $('#plname') ? '' : '';
+  if (!g.stamp){ t='No playlist written yet.'; h=''; }
+  else if (g.state==='working' || (g.state && g.state.startsWith('looking up'))){ cls='busy'; t=`Arma is applying the playlist: looking up ${g.lookups_left} mod(s) on the workshop…`; h='<b>applying…</b>'; }
+  else if (g.state==='downloading'){ cls='busy'; const p=Math.round((g.download_progress||0)*100); t=`Arma is downloading ${g.downloads} mod(s) · ${p}%`; h=`<b>downloading ${p}%</b>`; bar.style.display=''; bar.firstElementChild.style.width=p+'%'; }
+  else if (g.state==='waiting for backend'){ cls='wait'; t='Arma is at the menu but not connected to the Workshop yet (offline, or still logging in). The companion applies the playlist once it connects.'; h='waiting for the workshop connection'; }
+  else if (g.state==='enabling'){ cls='busy'; t='Arma is enabling the playlist…'; h='<b>applying…</b>'; }
+  else if (g.up_to_date && g.state==='declined'){ cls=''; t='You declined this playlist in game. Change it, or hit Apply again.'; h='declined in game'; }
+  else if (g.up_to_date){ cls='ok'; t=`Applied in game.${g.failed.length?` ${g.failed.length} mod(s) could not be found or downloaded.`:''}`; h='<b>✓ applied in game</b>'; }
+  else if (g.game_running){ cls='wait'; t='Arma is running; the playlist applies on its own at the main menu.'; h='Arma running'; }
+  else { cls='wait'; t='Arma is not running. Launch it and the playlist applies on its own at the main menu.'; h='launch Arma to apply'; }
+  if (g.state!=='downloading') bar.style.display='none';
+  dot.className='dot '+cls; txt.textContent=t; hdr.innerHTML=h;
+  const lb=$('#launchbtn'); if (lb) lb.style.display = g.game_running ? 'none' : '';
+  const cb=$('#closegamebtn'); if (cb && !cb.disabled) cb.style.display = g.game_running ? '' : 'none';
+  $('#gbapply').style.display = (cls==='busy') ? 'none' : '';
+}
+$('#gbapply').onclick = async () => { await api('/api/game/apply',{}); renderRemovals(); };
+$('#closegamebtn').onclick = async () => { const b=$('#closegamebtn'); b.disabled=true; b.textContent='Closing…'; try { await api('/api/game/close',{}); } catch(e){} setTimeout(()=>{ b.disabled=false; b.textContent='■ Close Arma'; status(); }, 1500); };
+$('#launchbtn').onclick = async () => { $('#launchbtn').textContent='Starting…'; await api('/api/game/launch',{}); setTimeout(()=>{ $('#launchbtn').textContent='▶ Launch Arma'; }, 15000); watchStart(e => { $('#launchbtn').textContent='▶ Launch Arma'; alert(e); }); };
+
+let _modTab = 'desc';
+function showBrowse(fromHistory){
+  if (!$('#modpage').classList.contains('on')) return;
+  $('#modpage').classList.remove('on');
+  $('#nav').style.display=''; $('.banner').style.display='';
+  document.querySelector('main').classList.remove('hidden'); document.querySelector('.titlebar').style.display='';
+  if (state.view==='home'){ $('#home').classList.add('on'); document.querySelector('main').style.display='none'; document.querySelector('.titlebar').style.display='none'; }
+  else if (state.view==='list'){ $('#playlists').classList.add('on'); document.querySelector('main').style.display='none'; document.querySelector('.titlebar').style.display='none'; }
+  else if (state.view==='about'){ $('#about').classList.add('on'); document.querySelector('main').style.display='none'; document.querySelector('.titlebar').style.display='none'; }
+  else if (state.view==='party'){ $('#partyview').classList.add('on'); document.querySelector('main').style.display='none'; document.querySelector('.titlebar').style.display='none'; loadParty(); }
+  else if (state.view==='library'){ $('#library').classList.add('on'); document.querySelector('main').style.display='none'; document.querySelector('.titlebar').style.display='none'; loadLibrary(); }
+  else if (state.view==='downloads'){ $('#downloads').classList.add('on'); document.querySelector('main').style.display='none'; document.querySelector('.titlebar').style.display='none'; }
+  else if (state.view==='play'){ $('#play').classList.add('on'); document.querySelector('main').style.display='none'; document.querySelector('.titlebar').style.display='none'; }
+  if (!fromHistory) history.pushState({kind:'view', view:state.view}, '', '#/'+state.view);
+  requestAnimationFrame(()=>requestAnimationFrame(()=>window.scrollTo(0,_browseScroll)));
+}
+// mouse back/forward buttons and Alt+arrows go through the browser history
+$('#navBack').onclick = () => history.back();
+$('#navFwd').onclick = () => history.forward();
+history.scrollRestoration = 'manual';
+history.replaceState({kind:'view', view:'home'}, '', '#/home');
+window.addEventListener('popstate', ev => {
+  SND.play('back'); window._navQuiet = true; setTimeout(()=>{ window._navQuiet = false; }, 0);   // Back has its own sound, no page swoosh on top
+  const st = ev.state || {kind:'view', view:'home'};
+  if (st.kind==='mod') openMod(st.id, st.tab, true);
+  else {
+    showBrowse(true);
+    if (st.kind==='view' && st.view!==state.view) setView(st.view);
+    else if (st.kind==='view' && st.page && st.page!==state.page){ state.page=st.page; load(); window.scrollTo(0,0); }
+    else if (st.kind==='view' && !st.page && state.page!==1 && st.view===state.view && !['home','list','about'].includes(st.view)){ state.page=1; load(); window.scrollTo(0,0); }
+  }
+});
+let _browseScroll = 0;
+async function openMod(id, tab, fromHistory){
+  closeMod();
+  _modTab = tab || 'desc';
+  if (!fromHistory){
+    if (!$('#modpage').classList.contains('on')) _browseScroll = window.scrollY;
+    history.pushState({kind:'mod', id, tab:_modTab}, '', '#/mod/'+id);
+  }
+  const page = $('#modpage'); page.classList.add('on');
+  document.querySelector('main').classList.add('hidden'); document.querySelector('.titlebar').style.display='none';
+  $('#home').classList.remove('on'); $('#playlists').classList.remove('on'); $('#play').classList.remove('on'); $('#downloads').classList.remove('on'); $('#library').classList.remove('on'); $('#partyview').classList.remove('on'); $('#nav').style.display='none'; $('.banner').style.display='none';
+  window.scrollTo(0,0);
+  page.innerHTML = '<div class="empty">Loading…</div>';
+  const d = await api('/api/mod/'+id);
+  if (d.error){ page.innerHTML = `<div class="mp-crumb"><a href="#" onclick="showBrowse();return false">← Back</a></div><div class="empty">${esc(d.error)}</div>`; return; }
+  const listed = (window._list||[]).some(i=>i.id===d.id);
+  const shots = d.screenshots.length ? d.screenshots : [''];
+  const pct = Math.round((d.rating||0)*100);
+  const changelog = (d.changelog||'').trim();
+  const body = _modTab==='desc' ? `<div class="mp-desc"><h3>${esc(d.name)}</h3>${esc(d.description)}</div>`
+    : _modTab==='notes' ? `<div class="mp-desc"><h3>Change notes</h3>${changelog?esc(changelog):'<span style="color:var(--dim)">The author has not written change notes.</span>'}</div>`
+    : `<div class="mp-desc"><h3>Versions</h3><table class="mp-ver">${(d.versions||[]).map(v=>`<tr><td>${esc(v.version||'')}</td><td>${(v.at||'').slice(0,10)}</td><td style="color:var(--dim)">game ${esc(v.game||'')}</td></tr>`).join('')||'<tr><td style="color:var(--dim)">no version history</td></tr>'}</table></div>`;
+  page.innerHTML = `
+    <div class="mp-crumb"><a href="#" id="mpBack">Reforger Workshop</a> › <a href="#" id="mpAuthorCrumb">${esc(d.author)}'s Workshop</a> › ${esc(d.name)}</div>
+    <div class="mp-head">
+      <h1>${esc(d.name)}</h1>
+      <div class="mp-rating">${stars(d.rating||0, d.votes)}<small>${d.votes?`${pct}% · ${fmtN(d.votes)} ratings`:'no ratings yet'}</small></div>
+    </div>
+    <div class="mp-tabs">
+      <button data-tab="desc" class="${_modTab==='desc'?'on':''}">Description</button>
+      <button data-tab="notes" class="${_modTab==='notes'?'on':''}">Change Notes${changelog?'':''}</button>
+      <button data-tab="versions" class="${_modTab==='versions'?'on':''}">Versions <b>${(d.versions||[]).length}</b></button>
+    </div>
+    <div class="mp-body">
+      <div>
+        <div class="mp-gallery">
+          <img class="mp-main" id="mpMain" src="${esc(shots[0])}" alt="">
+          ${shots.length>1?`<div class="mp-thumbs">${shots.map((u,i)=>`<img src="${esc(u)}" class="${i===0?'on':''}" data-i="${i}">`).join('')}</div>`:''}
+          <div class="mp-actions">
+            <button id="mpFav">${d.fav?'♥ Favorited':'♡ Favorite'}</button>
+            <button id="mpCopy">Copy ID</button>
+            <a href="${esc(d.url)}" target="_blank"><button>Open on workshop site</button></a>
+            ${d.installed?`<button id="mpDel" class="${isPendingRemoval(d.id)?'':'danger'}">${isPendingRemoval(d.id)?'⌛ Deletion queued · cancel':'🗑 Uninstall from PC'}</button>`:''}
+          </div>
+        </div>
+        <div class="mp-sub">
+          <div class="t"><small>${listed?'Subscribed in your playlist':'Subscribe to install'}</small><b>${esc(d.name)}</b>${listed?`<div class="state ${d.installed?'ok':'wait'}">${d.installed?'✓ Installed on this PC':'⌛ Downloads when Arma is at the main menu'}</div>`:''}</div>
+          <button class="big ${listed?'subscribed':'primary'}" id="mpAdd" title="${listed?'Click to unsubscribe':'Add to your playlist; Arma downloads it'}">${listed?'<span class="sub">✓ Subscribed</span><span class="unsub">✕ Unsubscribe</span>':'+ Subscribe'}</button>
+        </div>
+        ${body}
+      </div>
+      <div>
+        <div class="mp-side">
+          <img src="${esc(shots[0])}" alt="">
+          <table>
+            <tr><td>File size</td><td>${fmtSize(d.size||0)}</td></tr>
+            <tr><td>Posted</td><td>${(d.created_at||'').slice(0,10)}</td></tr>
+            <tr><td>Updated</td><td>${(d.updated_at||'').slice(0,10)} <span style="color:var(--dim)">(${ago(d.updated_at)})</span></td></tr>
+            <tr><td>Version</td><td>${esc(d.version||'')}${d.installed_version && d.installed_version!==d.version ? ` <span style="color:var(--hi)">(installed ${esc(d.installed_version)})</span>` : ''}</td></tr>
+            <tr><td>Game version</td><td>${esc(d.game_version||'?')}</td></tr>
+            <tr><td>License</td><td>${esc(d.license||'')}</td></tr>
+            <tr><td>Change notes</td><td><a href="#" id="mpNotes">${(d.versions||[]).length} versions (view)</a></td></tr>
+            ${d.installed?`<tr><td>Status</td><td style="color:var(--goodtxt)">✓ installed${isPendingRemoval(d.id)?' <span style="color:#ffcf6b">(deletion queued)</span>':''}</td></tr>`:''}
+          </table>
+          <div class="tags" style="margin-top:8px">${(d.tags||[]).map(t=>`<span class="tag">${esc(nice(t))}</span>`).join(' ')}</div>
+        </div>
+        <div class="mp-by"><small>Created by</small><a href="#" id="mpAuthor">${esc(d.author)}</a></div>
+        <div class="mp-stats">
+          <div><b>${d.downloads!=null?fmtN(d.downloads):'?'}</b> Downloads</div>
+          <div><b>${fmtN(d.subscribers)}</b> Subscribers (site count)</div>
+          <div><b>${fmtN(d.votes||0)}</b> Ratings (${Math.round((d.rating||0)*100)}% positive)</div>
+        </div>
+        ${d.dependencies.length?`<div class="mp-deps"><small>Required items</small>${d.dependencies.map(x=>`<a href="#" data-id="${esc(x.id)}">${esc(x.name||x.id)}</a>`).join('')}</div>`:''}
+        ${d.scenarios.length?`<div class="mp-deps"><small>Scenarios</small>${d.scenarios.map(x=>`<div>${esc(x.name)}</div>`).join('')}</div>`:''}
+      </div>
+    </div>`;
+  $('#mpBack').onclick = ev => { ev.preventDefault(); showBrowse(); };
+  const byAuthor = ev => { ev.preventDefault(); showBrowse(); $('#q').value = d.author; state.q = d.author; frameAllForSearch(); refresh(); };
+  $('#mpAuthor').onclick = byAuthor; $('#mpAuthorCrumb').onclick = byAuthor;
+  $('#mpNotes').onclick = ev => { ev.preventDefault(); history.replaceState({kind:'mod', id:d.id, tab:'versions'}, '', '#/mod/'+d.id); openMod(d.id, 'versions', true); };
+  page.querySelectorAll('.mp-tabs button').forEach(b => b.onclick = () => { history.replaceState({kind:'mod', id:d.id, tab:b.dataset.tab}, '', '#/mod/'+d.id); openMod(d.id, b.dataset.tab, true); });
+  page.querySelectorAll('.mp-thumbs img').forEach(im => im.onclick = () => { $('#mpMain').src = im.src; page.querySelectorAll('.mp-thumbs img').forEach(x=>x.classList.toggle('on', x===im)); });
+  $('#mpAdd').onclick = async () => { await toggleList(d.id, listed); openMod(d.id, _modTab, true); };
+  $('#mpFav').onclick = async () => { await toggleFav(d.id); openMod(d.id, _modTab, true); };
+  $('#mpCopy').onclick = () => navigator.clipboard.writeText(d.id);
+  const mpDel = $('#mpDel'); if (mpDel) mpDel.onclick = async () => { await removeFromPc(d); openMod(d.id, _modTab, true); };
+  page.querySelectorAll('.mp-deps a[data-id]').forEach(a => a.onclick = ev => { ev.preventDefault(); openMod(a.dataset.id); });
+}
+function closeMod(){ $('#modal').classList.remove('on'); }
+$('#modal').onclick = ev => { if (ev.target.id==='modal') closeMod(); };
+$('#depmodal').onclick = ev => { if (ev.target.id==='depmodal') $('#depmodal').classList.remove('on'); };
+document.addEventListener('keydown', ev => { if (ev.key==='Escape') { closeMod(); $('#sortmenu').classList.remove('on'); } });
+
+// controls
+const NAV_ORDER = ['home','browse','library','play','downloads','party'];
+function setView(v){
+  const was = state.view, a = NAV_ORDER.indexOf(was === 'installed' || was === 'favs' || was === 'list' ? 'library' : was), b = NAV_ORDER.indexOf(v);
+  if (window._uiReady && !window._navQuiet && was && v !== was && a >= 0 && b >= 0) { if (document.documentElement.dataset.theme === 'x360') SND.play('select');   // 360: same blip as ticking a mod
+    else SND.play(b < a ? 'page-left' : 'page-right', .7); }
+  window._navQuiet = false;
+  // the old Your Items / Playlists pages now live in My Mods
+  if (v==='installed' || v==='favs' || v==='list'){ lib.sel = v==='installed' ? 'installed' : v==='favs' ? 'favs' : 'pl:'+(state.pid||''); v='library'; }
+  state.view = v;
+  $$('#nav button').forEach(x=>x.classList.toggle('on', x.dataset.view===v || (v==='favs'&&x.dataset.view==='installed')));
+  if (v==='about') v='party';
+  const home = v==='home', pl = false, ab = false, py = v==='play', dv = v==='downloads', lb = v==='library', pv = v==='party';
+  $('#home').classList.toggle('on', home);
+  $('#playlists').classList.toggle('on', pl);
+  $('#about').classList.toggle('on', ab);
+  $('#play').classList.toggle('on', py);
+  $('#downloads').classList.toggle('on', dv);
+  $('#library').classList.toggle('on', lb);
+  $('#partyview').classList.toggle('on', pv);
+  document.querySelector('main').classList.remove('hidden');
+  document.querySelector('main').style.display = (home||pl||ab||py||dv||lb||pv) ? 'none' : '';
+  document.querySelector('.titlebar').style.display = (home||pl||ab||py||dv||lb||pv) ? 'none' : '';
+  if (home){ loadHome(); return; }
+  if (pl){ loadList(); return; }
+  if (ab){ return; }
+  if (py){ loadPlay(); return; }
+  if (dv){ loadDownloads(); return; }
+  if (lb){ loadLibrary(); return; }
+  if (pv){ loadParty(); return; }
+  $('#title').textContent = {browse:'Browsing: Items', installed:'Your Items: installed on this PC', favs:'Your Favorites'}[v];
+  state.page=1; load(); loadList();
+}
+$('#nav').onclick = ev => {
+  const a=ev.target.closest('a[data-view]'); const b=ev.target.closest('button');
+  const t = a || b; if(!t) return; ev.preventDefault();
+  if (a && a.dataset.tag){ state.tags.clear(); state.notTags.clear(); state.tags.add(a.dataset.tag); goBrowse('popular','all'); return; }
+  if (a && a.dataset.sort){ state.tags.clear(); state.notTags.clear(); goBrowse(a.dataset.sort, a.dataset.frame); return; }
+  if (b && b.dataset.view==='browse'){ state.tags.clear(); state.notTags.clear(); goBrowse('popular','3months'); return; }
+  showBrowse(); history.pushState({kind:'view', view:t.dataset.view}, '', '#/'+t.dataset.view); setView(t.dataset.view);
+};
+
+function cardHtml(m){
+  return `<div class="img" style="background-image:url('${esc(m.thumb)}')"></div>
+      <div class="meta">
+        ${stars(m.rating, m.votes)}<span class="votes">${m.votes?fmtN(m.votes)+' ratings':'no ratings'}</span>
+        <div class="name" title="${esc(m.name)}">${esc(m.name)}</div>
+        <div class="by">by ${esc(m.author)}</div>
+      </div>
+      <button class="add" title="${m.listed?'In your playlist (click to remove)':'Add to playlist'}">${m.listed?'✓':'+'}</button>
+      <button class="fav" title="favorite">${m.fav?'♥':'♡'}</button>
+      ${m.installed?'<span class="badge">✓ installed</span>':''}
+      ${m.installed?`<button class="del" title="Delete this mod from your PC (done by the game)">${isPendingRemoval(m.id)?'⌛ deleting':'🗑 uninstall'}</button>`:''}`;
+}
+function isPendingRemoval(id){ return (window._removals||[]).includes(id); }
+async function removeFromPc(m){
+  if (isPendingRemoval(m.id)){ await api('/api/remove_pc/cancel',{id:m.id}); window._removals=(window._removals||[]).filter(x=>x!==m.id); refresh(); return; }
+  if (!confirm(`Delete "${m.name||m.id}" from your PC?\n\nIt is removed from the active playlist and the game deletes the files the next time it is at the main menu.`)) return;
+  await api('/api/remove_pc',{id:m.id});
+  window._removals=[...(window._removals||[]),m.id];
+  refresh();
+}
+function wireCard(el, m){
+  if (m.listed) el.classList.add('listed');
+  if (m.fav) el.classList.add('faved');
+  el.querySelector('.add').onclick = ev => { ev.stopPropagation(); toggleList(m.id, m.listed); };
+  el.querySelector('.fav').onclick = ev => { ev.stopPropagation(); toggleFav(m.id); };
+  const del = el.querySelector('.del'); if (del) del.onclick = ev => { ev.stopPropagation(); removeFromPc(m); };
+  if (isPendingRemoval(m.id)) el.classList.add('pending');
+  el.onclick = () => openMod(m.id);
+  el.onmouseenter = ev => showHover(el, m);
+  el.onmouseleave = hideHover;
+}
+// Steam's hover panel: description, dates, tags
+let _hoverT;
+function showHover(el, m){
+  clearTimeout(_hoverT);
+  _hoverT = setTimeout(() => {
+    const h = $('#hover');
+    h.innerHTML = `<b>${esc(m.name)}</b><div class="hv-desc">${esc((m.summary||'').slice(0,320))}${(m.summary||'').length>320?'…':''}</div>
+      <div class="hv-meta">Posted: ${(m.created_at||'').slice(0,10)}<br>Updated: ${(m.updated_at||'').slice(0,10)}<br>${fmtSize(m.size)} · ${m.votes?fmtN(m.votes)+' ratings':'no ratings'}${m.downloads!=null?' · '+fmtN(m.downloads)+' downloads':''}</div>
+      <div class="tags">${(m.tags||'').split(',').filter(Boolean).slice(0,6).map(t=>`<span class="tag">${esc(nice(t))}</span>`).join('')}</div>`;
+    const r = el.getBoundingClientRect();
+    h.style.display='block';
+    const w = 300, vw = document.documentElement.clientWidth, vh = document.documentElement.clientHeight;
+    let left = r.right + 8; if (left + w > vw - 10) left = r.left - w - 8;
+    if (left < 10) left = Math.max(10, vw - w - 10);
+    let top = r.top; if (top + h.offsetHeight > vh - 10) top = Math.max(10, vh - h.offsetHeight - 10);
+    h.style.left = left+'px'; h.style.top = top+'px';
+  }, 350);
+}
+function hideHover(){ clearTimeout(_hoverT); $('#hover').style.display='none'; }
+window.addEventListener('scroll', hideHover, {passive:true});
+let homeSort = {sort:'popular', frame:'3months'};
+function rowHtml(m, extra){
+  return `<img src="${esc(m.thumb||'')}" loading="lazy" alt=""><div class="body"><div class="top"><span class="name">${esc(m.name)}</span>${stars(m.rating||0,m.votes||0)}</div><div class="by">By ${esc(m.author||'')}</div>${(m.tags!=null)?`<div class="tags">${(m.tags||'').split(',').filter(Boolean).slice(0,5).map(t=>`<span class="tag">${esc(nice(t))}</span>`).join('')}</div>`:''}<div class="cnt">${extra}<span class="rowbtns"><button class="plus ${m.listed?'on':''}" title="${m.listed?'in your playlist':'add to playlist'}">${m.listed?'✓':'+'}</button><button class="plusfav ${m.fav?'on':''}" title="favorite">♥</button></span></div></div>`;
+}
+function wireRow(el, m){
+  el.querySelector('.plus').onclick = ev => { ev.stopPropagation(); toggleList(m.id, m.listed); };
+  el.querySelector('.plusfav').onclick = ev => { ev.stopPropagation(); toggleFav(m.id); };
+  el.onclick=()=>openMod(m.id); el.onmouseenter=()=>showHover(el,m); el.onmouseleave=hideHover;
+}
+async function loadHome(){
+  api('/api/updates').then(u => {
+    const box = $('#updbox'); box.style.display = u.length ? '' : 'none';
+    const l = $('#updlist'); l.innerHTML='';
+    for (const m of u){ const el=document.createElement('div'); el.className='row'; el.innerHTML=rowHtml(m, `v${esc(m.version||'?')} · updated ${ago(m.updated_at)} (${(m.updated_at||'').slice(0,10)})`); wireRow(el,m); l.appendChild(el); }
+  });
+  api('/api/required').then(r => {
+    const l = $('#reqlist'); l.innerHTML='';
+    if (!r.length) l.innerHTML = '<div class="hint">Dependency data is still being collected; check back in a while.</div>';
+    for (const m of r){ const el=document.createElement('div'); el.className='row'; el.innerHTML=rowHtml(m, `required by ${m.dependents} other mods · ${m.votes?fmtN(m.votes)+' ratings':'no ratings'}`); wireRow(el,m); l.appendChild(el); }
+  });
+  const week = await api('/api/mods?sort=popular&frame=week&per=20&min_votes=3');
+  const track = $('#carTrack'); track.innerHTML='';
+  for (const m of week.rows){ const el=document.createElement('div'); el.className='card'; el.innerHTML=cardHtml(m); wireCard(el, m); track.appendChild(el); }
+  const d = await api(`/api/mods?sort=${homeSort.sort}&frame=${homeSort.frame}&per=12`);
+  const list = $('#homeList'); list.innerHTML='';
+  for (const m of d.rows){
+    const el=document.createElement('div'); el.className='row';
+    el.innerHTML = `<img src="${esc(m.thumb)}" loading="lazy" alt=""><div class="body"><div class="top"><span class="name">${esc(m.name)}</span>${stars(m.rating,m.votes)}</div><div class="by">By ${esc(m.author)}</div><div class="tags">${(m.tags||'').split(',').filter(Boolean).slice(0,5).map(t=>`<span class="tag">${esc(nice(t))}</span>`).join('')}</div><div class="cnt">${m.votes?fmtN(m.votes)+' ratings':'no ratings'} · ${m.downloads!=null?fmtN(m.downloads)+' downloads':fmtSize(m.size)}<span class="rowbtns"><button class="plus ${m.listed?'on':''}" title="${m.listed?'in your playlist':'add to playlist'}">${m.listed?'✓':'+'}</button><button class="plusfav ${m.fav?'on':''}" title="favorite">♥</button></span></div></div>`;
+    el.querySelector('.plus').onclick = ev => { ev.stopPropagation(); toggleList(m.id, m.listed); };
+    el.querySelector('.plusfav').onclick = ev => { ev.stopPropagation(); toggleFav(m.id); };
+    el.onclick=()=>openMod(m.id); el.onmouseenter=()=>showHover(el,m); el.onmouseleave=hideHover; list.appendChild(el);
+  }
+}
+$('#homeTabs').onclick = ev => { const b=ev.target.closest('button'); if(!b) return; $$('#homeTabs button').forEach(x=>x.classList.toggle('on',x===b)); homeSort={sort:b.dataset.sort, frame:b.dataset.frame}; $('#homeSub').textContent={popular:'Best rated of the mods posted in the past three months',subscribers:'Most downloaded of all time',updated:'Most recently updated',recent:'Newest on the workshop'}[b.dataset.sort]; loadHome(); };
+$('#carPrev').onclick = () => { $('#carTrack').scrollBy({left:-700}); };
+$('#carNext').onclick = () => { $('#carTrack').scrollBy({left:700}); };
+const goBrowse = (sort, frame, keepFilters) => { history.pushState({kind:'view', view:'browse'}, '', '#/browse'); state.sort=sort; state.frame=frame; if (!keepFilters){ $('#special').value=''; $('#q').value=''; state.q=''; $('#fdays').value=0; $('#cdays').value=0; } $$('input[name=sort]').forEach(r=>r.checked=r.value===sort); $$('input[name=frame]').forEach(r=>r.checked=r.value===frame); setView('browse'); loadFacets(); };
+$('#homeViewAll').onclick = () => goBrowse('popular','week');
+$('#updAll').onclick = () => { goBrowse('updated','all'); $('#special').value='only'; state.page=1; load(); };
+$('#homeQ').addEventListener('keydown', ev => { if (ev.key==='Enter'){ const q=$('#homeQ').value.trim(); $('#homeQ').value=''; goBrowse('popular','all'); $('#q').value=q; state.q=q; state.page=1; load(); } });
+$('#homeMore').onclick = () => goBrowse(homeSort.sort, homeSort.frame);
+$('#sortbtn').onclick = ev => { ev.stopPropagation(); $('#sortmenu').classList.toggle('on'); };
+document.addEventListener('click', ev => { if (!ev.target.closest('.sortbox')) $('#sortmenu').classList.remove('on'); });
+$$('input[name=sort]').forEach(r => r.onchange = () => {
+  state.sort=r.value; state.page=1;
+  if (state.sort==='trending' && state.frame==='custom'){ state.frame='month'; $$('input[name=frame]').forEach(x=>x.checked=x.value==='month'); }
+  load(); loadFacets(); });
+// custom range: Go applies the typed dates; the arrows step one chunk back or forward
+function applyRange(from, to){
+  state.range = {from, to}; state.frame='custom'; state.page=1;
+  $('#rgFrom').value = from||''; $('#rgTo').value = to||'';
+  $$('input[name=frame]').forEach(x=>x.checked=x.value==='custom');
+  load();
+}
+$('#rgGo').onclick = () => { const f=$('#rgFrom').value, t=$('#rgTo').value; if (!f && !t) return; if (f && t && f>t) applyRange(t, f); else applyRange(f, t); };
+function stepRange(dir){
+  const chunk = $('#rgChunk').value, today = new Date(); today.setHours(0,0,0,0);
+  let to = parseYmd(state.frame==='custom' && state.range ? state.range.to : '') , from;
+  if (!to){ to = today; from = shiftChunk(to, chunk, -1); }   // start from the most recent chunk
+  else from = parseYmd(state.range.from) || shiftChunk(to, chunk, -1);
+  from = shiftChunk(from, chunk, dir); to = shiftChunk(to, chunk, dir);
+  if (to > today){ to = today; from = shiftChunk(today, chunk, -1); }
+  applyRange(ymd(from), ymd(to));
+}
+$('#rgPrev').onclick = () => stepRange(-1);
+$('#rgNext').onclick = () => stepRange(1);
+$('#rgChunk').onchange = () => { if (state.frame==='custom' && state.range && state.range.to){ applyRange(ymd(shiftChunk(parseYmd(state.range.to), $('#rgChunk').value, -1)), state.range.to); } };
+for (const id of ['rgFrom','rgTo']) $('#'+id).addEventListener('keydown', ev => { if (ev.key==='Enter') $('#rgGo').click(); });
+$$('input[name=frame]').forEach(r => r.onchange = () => {
+  if (r.value==='custom'){ if (!state.range){ stepRange(0); } else { state.frame='custom'; state.page=1; load(); } return; }
+  state.frame=r.value; state.page=1; load(); });
+function frameAllForSearch(){ if (state.q && FRAMED.has(state.sort) && state.frame!=='all' && state.frame!=='custom'){ state.frame='all'; $$('input[name=frame]').forEach(r=>r.checked=r.value==='all'); } }
+let qt; $('#q').oninput = () => { clearTimeout(qt); qt=setTimeout(()=>{ state.q=$('#q').value.trim(); state.page=1; frameAllForSearch(); load(); }, 250); };
+for (const id of ['minvotes','minrating','maxmb','special','per','fdays','cdays']) $('#'+id).onchange = () => { state.page=1; load(); };
+$('#advgear').onclick = () => { const d=$('#advbox'); d.open=!d.open; };
+$('#datebtn').onclick = () => { const b=$('#datebox'); b.style.display = b.style.display==='none'?'':'none'; };
+$('#minrating').oninput = () => $('#minratinglbl').textContent = $('#minrating').value+'%';
+$('#reset').onclick = () => { state.tags.clear(); state.notTags.clear(); state.gv=''; $('#fdays').value=0; $('#cdays').value=0; $('#minvotes').value=0; $('#minrating').value=0; $('#minratinglbl').textContent='0%'; $('#maxmb').value=''; $('#special').value=''; $('#q').value=''; state.q=''; refresh(); };
+$('#plsel').onchange = () => { state.pid = parseInt($('#plsel').value); loadList(); if (state.view!=='list' && state.view!=='home') load(); };
+$('#plnew').onclick = async () => { const name = prompt('Playlist name'); if (!name) return; const r = await api('/api/playlist/create',{name}); state.pid = r.pid; loadList(); load(); };
+$('#sidemanage').onclick = () => { showBrowse(); lib.sel='pl:'+state.pid; history.pushState({kind:'view', view:'library'}, '', '#/library'); setView('library'); };
+$('#gearbtn').onclick = ev => { ev.stopPropagation(); $('#gearmenu').classList.toggle('on'); };
+document.addEventListener('click', ev => { if (!ev.target.closest('.gear')) $('#gearmenu').classList.remove('on'); });
+$('#plrename').onclick = async () => { const name = prompt('New name'); if (!name) return; const r = await api('/api/playlist/rename',{pid:state.pid, name}); if (r && r.error) alert(r.error); loadList(); };
+$('#pldup').onclick = async () => { const name = prompt('Name for the copy'); if (!name) return; const r = await api('/api/playlist/duplicate',{pid:state.pid, name}); state.pid=r.pid; loadList(); load(); };
+$('#plclear').onclick = async () => { if (confirm('Remove every mod from this playlist?')) { await api('/api/playlist/clear',{pid:state.pid}); loadList(); load(); } };
+$('#pldel').onclick = async () => { if (confirm('Delete this playlist?')) { await api('/api/playlist/delete',{pid:state.pid}); state.pid=0; loadList(); load(); } };
+$('#plactivate').onclick = async () => { await api('/api/playlist/activate',{pid:state.pid}); loadList(); load(); };
+$('#copylist').onclick = () => { navigator.clipboard.writeText((window._list||[]).map(i=>i.name||i.id).join('\n')); };
+$('#syncbtn').onclick = () => api('/api/sync',{full:false});
+$('#importbtn').onclick = async () => { const r = await api('/api/import_installed',{}); alert(r.added ? `${r.added} installed mod(s) added to the playlist.` : 'Every installed mod is already on a playlist.'); loadList(); reloadView(); };
+$('#fullbtn').onclick = () => { if (confirm('Re-download the full workshop list? About 15 minutes; the page keeps working.')) api('/api/sync',{full:true}); };
+
+let wasRunning = false;
+async function status(){
+  const s = await api('/api/status');
+  $('#listpath').textContent = 'Playlist file for the game: '+s.config.queue_dir+'\\queue.txt';
+  $('#aboutpath').textContent = s.config.queue_dir+'\\queue.txt';
+  if (s.game){ window._removals = s.game.removal_ids || window._removals; renderGame(s.game, true); }
+  const bar=$('#syncbar'), msg=$('#syncmsg');
+  if (s.running){
+    const st=s.sync;
+    if (st.quiet){
+      bar.style.display='none';   // the live check runs every couple of minutes: stay silent
+    } else {
+      bar.style.display='block';
+      const pct = st.pages? Math.round(100*st.page/st.pages) : 0;
+      bar.firstElementChild.style.width = pct+'%';
+      msg.textContent = st.first ? `building your mod list (first run only): ${pct}%` : `refreshing the full mod list: ${pct}%`;
+      if (Math.random()<0.25) loadFacets();
+    }
+    wasRunning = st.quiet ? 'quiet' : true;
+  } else {
+    bar.style.display='none';
+    // after a full refresh, redraw the list; after a live check, only the home page (redrawing a
+    // list you are scrolling every two minutes would throw you back to the top)
+    if (wasRunning) { const quiet = wasRunning==='quiet'; wasRunning=false; loadFacets(); if (state.view==='home') loadHome(); else if (!quiet) load(); }
+    if (s.sync.phase==='error') msg.textContent = 'sync error: '+s.sync.error;
+    else msg.textContent = '';
+    $('#enrichmsg').textContent = (s.enrich && s.enrich.todo>0) ? `Download counts still being fetched for ${s.enrich.todo.toLocaleString()} mods (background).` : 'Download counts up to date.';
+  }
+}
+
+// ---------------------------------------------------------------- Play tab
+const py = {mods:[], byId:{}, sel:[], scenario:'', load:true, extra:'', presets:{}, scen:null, filt:'all', dl:{}, depNames:{}};
+const fmtSz = b => !b ? '' : b>=1e9 ? (b/1e9).toFixed(1)+' GB' : b>=1e6 ? (b/1e6).toFixed(b>=1e7?0:1)+' MB' : Math.max(1,Math.round(b/1e3))+' KB';
+function initials(n){ const w=(n||'?').replace(/[^A-Za-z0-9 ]/g,' ').split(/\s+/).filter(Boolean); return ((w[0]||'?')[0]+((w[1]||'')[0]||'')).toUpperCase(); }
+function hue(s){ let h=0; for (const c of (s||'')) h=(h*31+c.charCodeAt(0))%360; return /^(xbox|x360)$/.test(document.documentElement.dataset.theme) ? 70 + (h % 70) : h; }   // Xbox themes: greens only
+function thumbHtml(m, cls){
+  if (m && m.img) return `<div class="py-th ${cls||''}" style="background-image:url('${esc(m.img)}')"></div>`;
+  const h=hue(m?m.guid:''); return `<div class="py-th ${cls||''}" style="background:linear-gradient(135deg,hsl(${h},45%,32%),hsl(${(h+40)%360},50%,18%))">${esc(initials(m?m.name:'?'))}</div>`;
+}
+async function loadPlay(){
+  const d = await api('/api/play/state');
+  py.mods = d.mods; py.byId = Object.fromEntries(d.mods.map(m=>[m.guid,m]));
+  py.dl = d.downloading||{}; py.depNames = d.dep_names||{};
+  const s = d.settings; py.sel = (s.mods||[]).filter(g=>py.byId[g]); py.scenario = s.scenario||''; py.load = !!s.load_save;
+  const dropped = py.sel.filter(g=>blockers(g).length);
+  if (dropped.length){ py.sel = py.sel.filter(g=>!dropped.includes(g)); savePlay();
+    setTimeout(()=>pyMsg('Unticked until their dependencies finish downloading: '+dropped.map(g=>py.byId[g].name).join(', '), true), 50); }
+  watchPlayDownloads();
+  py.extra = s.extra_args||''; py.presets = s.presets||{};
+  $('#pyLoad').checked = py.load; $('#pyExtra').value = py.extra;
+  $('#pyGame').textContent = d.game_dir ? 'Game: '+d.game_dir : 'Arma Reforger install not found (set game_dir in config.json)';
+  renderPresets(); renderPyMods(); await refreshScen();
+  pollBuild(d.build);
+}
+function renderPresets(){
+  const sel = $('#pyPreset'), cur = sel.value;
+  sel.innerHTML = '<option value="">(none)</option>' + Object.keys(py.presets).sort().map(n=>`<option>${esc(n)}</option>`).join('');
+  sel.value = py.presets[cur] ? cur : '';
+}
+function badge(m){
+  if (m.kind==='workshop') return '<span class="b">Workshop</span>';
+  if (m.build==='packed') return m.stale ? '<span class="b stale" title="The source changed since the last build. Rebuild to include your changes.">Local · build outdated</span>' : '<span class="b loc">Local · built</span>';
+  return '<span class="b loc" title="Loaded straight from your Workbench project">Local · source</span>';
+}
+function renderPyMods(){
+  const q = ($('#pyQ').value||'').toLowerCase();
+  const box = $('#pyMods'); box.innerHTML='';
+  let lastKind = '', shown=0;
+  for (const m of py.mods){
+    const on = py.sel.includes(m.guid);
+    if (py.filt==='sel' && !on) continue;
+    if (py.filt==='local' && m.kind!=='local') continue;
+    if (py.filt==='workshop' && m.kind!=='workshop') continue;
+    if (q && !(m.name||'').toLowerCase().includes(q) && !m.guid.toLowerCase().includes(q) && !(m.author||'').toLowerCase().includes(q)) continue;
+    if (m.kind!==lastKind){ lastKind=m.kind; const kind=m.kind; const h=document.createElement('div'); h.className='py-sec';
+      h.innerHTML = `<span>${kind==='local'?'Your local projects':'Downloaded from the Workshop'}</span><span class="py-secbtns"><button data-s="all">Select all</button><button data-s="none">None</button></span>`;
+      h.querySelector('[data-s=all]').onclick = () => { py.mods.filter(x=>x.kind===kind).forEach(x=>selectWithDeps(x.guid)); renderPyMods(); savePlay(); refreshScen(); };
+      h.querySelector('[data-s=none]').onclick = () => { const ids=new Set(py.mods.filter(x=>x.kind===kind).map(x=>x.guid)); py.sel=py.sel.filter(g=>!ids.has(g)); renderPyMods(); savePlay(); refreshScen(); };
+      box.appendChild(h); }
+    shown++;
+    const meta = [m.author?('by '+m.author):'', m.version?('v'+m.version):'', fmtSz(m.size)].filter(Boolean).join(' · ') || (m.kind==='local'?'Your Workbench project':'Workshop mod');
+    const blk = blockers(m.guid);
+    const el = document.createElement('div'); el.className='py-mod'+(on?' sel':'')+(blk.length?' blk':'');
+    const blkTxt = blk.length ? (blk.some(b=>b.dl) ? 'Waiting for ' : 'Needs ') + blk.map(b=>b.name).join(', ') + (blk.some(b=>b.dl) ? ' to finish downloading' : ' (not downloaded)') : '';
+    el.innerHTML = `<span class="py-chk">✓</span>${thumbHtml(m)}<div class="tx"><div class="n" title="${esc(m.name)} (${m.guid})">${m.kind==='workshop'?`<span class="nl" title="Open the mod page">${esc(m.name)}</span>`:esc(m.name)}</div><div class="m">${esc(blk.length?blkTxt:meta)}</div></div>${blk.length?`<span class="b wait">${blk.some(b=>b.dl)?'downloading deps':'missing deps'}</span>`:badge(m)}`+
+      (m.kind==='local'?`<span class="acts${m.stale?' show':''}"><button data-a="build" title="Pack this project with Workbench (like publishing, but local)">${m.build==='packed'?'Rebuild':'Build'}</button>${m.build==='packed'?'<button data-a="src" title="Delete the build and load straight from source">Use source</button>':''}</span>`:'');
+    el.onclick = ev => {
+      if (ev.target.closest('.nl')) { ev.stopPropagation(); openMod(m.guid); return; }
+      const b = ev.target.closest('button');
+      if (b){ ev.stopPropagation();
+        if (b.dataset.a==='build') api('/api/play/build',{id:m.guid}).then(r=>{ if (!r.ok) pyMsg(r.error,true); else pollBuild(); });
+        if (b.dataset.a==='src' && confirm('Delete the packed build of '+m.name+'? It will load from your project source instead.')) api('/api/play/unbuild',{id:m.guid}).then(loadPlay);
+        return; }
+      if (py.sel.includes(m.guid)) { SND.play('back-2'); py.sel = py.sel.filter(x=>x!==m.guid); el.classList.remove('sel'); }
+      else if (blk.length) { pyMsg(`${m.name} can't be enabled yet. ${blkTxt}.`, true); return; }
+      else {
+        const added = selectWithDeps(m.guid);
+        SND.play('select');
+        if (added.length) { renderPyMods(); pyMsg(`Also ticked what ${m.name} needs: ${added.map(g=>(py.byId[g]||{}).name||g).join(', ')}`); }
+        else el.classList.add('sel');
+      }
+      $('#pyCount').textContent = `${py.sel.length} ticked · ${py.mods.length} on this PC`;
+      savePlay(); refreshScen();
+    };
+    box.appendChild(el);
+  }
+  if (!shown) box.innerHTML = '<div class="hint" style="padding:10px">No mods match.</div>';
+  $('#pyCount').textContent = `${py.sel.length} ticked · ${py.mods.length} on this PC`;
+}
+// tick a mod and everything it depends on (recursively); dependencies go before it in the order.
+// Returns the dependencies that were newly ticked.
+// dependencies (recursively) that are not on this PC: [{guid, name, dl: true if downloading now}]
+function blockers(guid){
+  const out = [], seen = new Set();
+  const visit = g => {
+    if (seen.has(g)) return; seen.add(g);
+    const m = py.byId[g];
+    if (!m) { out.push({guid:g, name: py.dl[g] || py.depNames[g] || g, dl: !!py.dl[g]}); return; }
+    for (const d of (m.deps||[])) visit(d);
+  };
+  visit(guid);
+  return out;
+}
+// while something downloads, re-check every few seconds; reload the list when a download lands
+let _pyDlTimer = null;
+function watchPlayDownloads(){
+  clearTimeout(_pyDlTimer);
+  if (!Object.keys(py.dl).length) return;
+  _pyDlTimer = setTimeout(async () => {
+    if (state.view!=='play') { _pyDlTimer=null; return; }
+    let d; try { d = await api('/api/play/downloading'); } catch(e) { watchPlayDownloads(); return; }
+    const before = Object.keys(py.dl).sort().join(), now = Object.keys(d.downloading||{}).sort().join();
+    if (before !== now) loadPlay(); else watchPlayDownloads();
+  }, 5000);
+}
+function selectWithDeps(guid){
+  if (blockers(guid).length) return [];
+  const added = [], seen = new Set();
+  const visit = g => {
+    if (seen.has(g)) return; seen.add(g);
+    for (const d of ((py.byId[g]||{}).deps||[])) visit(d);
+    if (!py.sel.includes(g) && py.byId[g]) { py.sel.push(g); if (g!==guid) added.push(g); }
+  };
+  visit(guid);
+  return added;
+}
+function savePlay(){ return api('/api/play/save', {mods:py.sel, scenario:py.scenario, load_save:py.load, extra_args:py.extra, presets:py.presets}); }
+let _scenSerial = 0;
+async function refreshScen(){
+  const serial = ++_scenSerial;
+  await savePlay();
+  const d = await api('/api/play/scenarios', {mods:py.sel});
+  if (serial !== _scenSerial) return;   // a newer click is already on its way
+  py.scen = d;
+  // load order
+  const ob = $('#pyOrder'); ob.innerHTML='';
+  if (!d.order.length) ob.innerHTML = '<div class="hint">Tick mods on the left.</div>';
+  d.order.forEach((g,i) => {
+    const m = py.byId[g] || {name:g, guid:g}; const auto = d.added.includes(g); const pos = py.sel.indexOf(g);
+    const el = document.createElement('div'); el.className='py-mod';
+    el.innerHTML = `<span class="i">${i+1}</span>${thumbHtml(m,'sm')}<div class="tx"><div class="n">${esc(m.name)}</div></div>${auto?'<span class="dep">dependency</span>':`<button title="Earlier">↑</button><button title="Later">↓</button>`}`;
+    if (!auto){ const [up,dn] = el.querySelectorAll('button');
+      up.onclick = () => { if (pos>0){ [py.sel[pos-1],py.sel[pos]]=[py.sel[pos],py.sel[pos-1]]; refreshScen(); } };
+      dn.onclick = () => { if (pos<py.sel.length-1){ [py.sel[pos+1],py.sel[pos]]=[py.sel[pos],py.sel[pos+1]]; refreshScen(); } }; }
+    ob.appendChild(el);
+  });
+  if (d.missing.length){ const w=document.createElement('div'); w.className='py-msg err'; w.textContent='Missing dependencies (not downloaded): '+d.missing.join(', '); ob.appendChild(w); }
+  // scenarios
+  const all = d.scenarios.concat(d.vanilla);
+  if (py.scenario && !all.some(s=>s.rid===py.scenario)) py.scenario = '';
+  const fill = (box, list, empty) => {
+    box.innerHTML = list.length ? '' : `<div class="hint">${empty}</div>`;
+    for (const s of list){
+      const el = document.createElement('div'); el.className = 'py-card'+(s.rid===py.scenario?' on':'');
+      const h=hue(s.rid);
+      const bg = s.img ? `background-image:url('${esc(s.img)}')` : `background:linear-gradient(135deg,hsl(${h},40%,28%),hsl(${(h+50)%360},45%,14%))`;
+      el.innerHTML = `<div class="im" style="${bg}">${s.players?`<span>${s.players} players</span>`:''}</div><div class="t"><div class="n" title="${esc(s.label)}">${esc(s.label)}</div><div class="m">${esc(s.owner_name)}${s.mode&&s.mode!==s.owner_name&&!s.mode.startsWith('#')?' · '+esc(s.mode):''}</div></div>`;
+      el.onclick = () => { py.scenario = s.rid; $$('.py-card').forEach(x=>x.classList.remove('on')); el.classList.add('on'); savePlay().then(showCmd); };
+      box.appendChild(el);
+    }
+  };
+  fill($('#pyScen'), d.scenarios, 'None of the ticked mods has its own scenario. Pick a base game one below.');
+  fill($('#pyVan'), d.vanilla, 'Base game not found.');
+  if (!d.scenarios.length) document.querySelector('details.py-van').open = true;
+  showCmd();
+}
+function showCmd(){
+  const d = py.scen; if (!d) return;
+  const s = d.scenarios.concat(d.vanilla).find(x=>x.rid===py.scenario);
+  const size = d.order.reduce((a,g)=>a+((py.byId[g]||{}).size||0),0);
+  $('#pyHeroTitle').textContent = s ? s.label : 'Pick a scenario';
+  $('#pyHeroSub').textContent = `${d.order.length} mod(s)${size?' · '+fmtSz(size):''}${s?' · '+s.owner_name:''}${d.missing.length?' · '+d.missing.length+' missing dependency':''}`;
+  const hi = $('#pyHeroImg');
+  if (s && s.img){ hi.style.backgroundImage=`url('${s.img}')`; hi.textContent=''; }
+  else { const h=hue(s?s.rid:'x'); hi.style.backgroundImage=`linear-gradient(135deg,hsl(${h},40%,28%),hsl(${(h+50)%360},45%,14%))`; hi.textContent = s?'':'▶'; }
+  const args = ['-addons', d.order.join(',')];
+  if (py.scenario){ args.push('-server', py.scenario); if (py.load) args.push('-loadSessionSave'); }
+  if (py.extra) args.push(py.extra);
+  $('#pyCmd').textContent = 'ArmaReforgerSteam.exe '+args.join(' ');
+  $('#pyGo').disabled = !py.scenario || !d.order.length || d.missing.length>0;
+}
+function pyMsg(t, err){ if (err) SND.play('ui-4', .8); const m=$('#pyMsg'); m.textContent=t; m.className='py-msg '+(err?'err':'ok'); }
+let _buildTimer = null;
+async function pollBuild(b){
+  clearTimeout(_buildTimer);
+  b = b || await api('/api/play/build');
+  if (b.running){ pyMsg('Building '+b.name+' with Workbench… (a Workbench window may appear; it closes itself)'); _buildTimer=setTimeout(()=>pollBuild(),2000); return; }
+  if (b.at && b.msg && b.at !== py.buildSeen){ py.buildSeen = b.at; pyMsg(b.msg, b.ok===false); if (b.ok) { await loadPlay(); pyMsg(b.msg); } }
+}
+$('#pyQ').oninput = renderPyMods;
+$('#pyFilt').onclick = ev => { const b=ev.target.closest('button'); if(!b) return; py.filt=b.dataset.f; $$('#pyFilt button').forEach(x=>x.classList.toggle('on',x===b)); renderPyMods(); };
+$('#pyLoad').onchange = ev => { py.load = ev.target.checked; savePlay(); showCmd(); };
+$('#pyExtra').onchange = ev => { py.extra = ev.target.value.trim(); savePlay(); showCmd(); };
+$('#pyNone').onclick = () => { py.sel=[]; renderPyMods(); refreshScen(); };
+$('#pyPreset').onchange = ev => { const p = py.presets[ev.target.value]; if (!p) return; py.sel = []; p.mods.filter(g=>py.byId[g]).forEach(g=>selectWithDeps(g)); py.scenario = p.scenario||''; py.load = p.load_save!==false; $('#pyLoad').checked=py.load; renderPyMods(); refreshScen(); };
+$('#pyPresetSave').onclick = async () => { const n = prompt('Preset name', $('#pyPreset').value||''); if (!n) return; py.presets[n] = {mods:[...py.sel], scenario:py.scenario, load_save:py.load}; await savePlay(); renderPresets(); $('#pyPreset').value=n; };
+$('#pyPresetDel').onclick = async () => { const n=$('#pyPreset').value; if (!n || !confirm('Delete preset '+n+'?')) return; delete py.presets[n]; await savePlay(); renderPresets(); };
+$('#pyFromPl').onclick = async () => { const items = await api('/api/playlist/'+state.pid); const ids = items.map(i=>i.id).filter(g=>py.byId[g]); ids.forEach(g=>selectWithDeps(g)); renderPyMods(); refreshScen(); pyMsg(`${ids.length} mod(s) from the playlist ticked.`); };
+$('#pyGo').onclick = async () => {
+  $('#pyGo').disabled = true; $('#pyGo').textContent = 'Starting…';
+  await savePlay();
+  const r = await api('/api/play/launch', {});
+  $('#pyGo').textContent = '▶ Launch';
+  if (!r.ok){ pyMsg(r.error, true); $('#pyGo').disabled=false; return; }
+  pyMsg((r.party ? 'Hosting for your party: Arma Reforger is starting, and your party joins as soon as you are in' : 'Arma Reforger is starting straight into the scenario')+(r.copied&&r.copied.length?` (copied from source: ${r.copied.join(', ')})`:'')+'.');
+  setTimeout(()=>{ $('#pyGo').disabled=false; }, 15000);
+  watchStart(e => pyMsg(e, true));
+};
+// the game can die a second after starting (Steam refusing it); the server watches its log and says why
+async function watchStart(show){
+  for (let i=0;i<30;i++){
+    await new Promise(r=>setTimeout(r,2000));
+    let s; try { s = await api('/api/play/start'); } catch(e){ continue; }
+    if (s.error){ show(s.error); return; }
+  }
+}
+
+// ---------------------------------------------------------------- Party
+const fmtMB = b => b>=1e9 ? (b/1e9).toFixed(1)+' GB' : b>=1e6 ? (b/1e6).toFixed(b>=1e7?0:1)+' MB' : Math.max(1,Math.round(b/1e3))+' KB';
+let _ptTimer=null, _pt=null;
+function avatar(name){ const h=hue(name||'?'); return `<div class="pv-av" style="background:linear-gradient(135deg,hsl(${h},55%,40%),hsl(${(h+50)%360},55%,25%))">${esc(initials(name))}</div>`; }
+function memCard(x, you){
+  const synced = x.synced===x.total && x.total>0;
+  if (x.host) return `<div class="pv-mem">${avatar(x.name)}<div style="min-width:0"><div class="n">${esc(x.name)}${you?' <span class="hint">(you)</span>':''} <span class="pt-chip host">host</span></div><div class="chips">${x.in_game?'<span class="pt-chip ok">in game</span>':'<span class="pt-chip ok">picks the mods</span>'}</div></div></div>`;
+  const chips = (x.syncing?'<span class="pt-chip warn">syncing…</span>': synced?'<span class="pt-chip ok">mods synced</span>':`<span class="pt-chip bad">${Math.max(0,x.total-x.synced)} of ${x.total} not synced</span>`)
+    + (x.ready?'<span class="pt-chip ok">ready</span>':'<span class="pt-chip">not ready</span>') + (x.in_game?'<span class="pt-chip ok">in game</span>':'');
+  return `<div class="pv-mem">${avatar(x.name)}<div style="min-width:0"><div class="n">${esc(x.name)}${you?' <span class="hint">(you)</span>':''}${x.host?' <span class="pt-chip host">host</span>':''}</div><div class="chips">${chips}</div>${(x.problems||[]).length?`<div class="p">${esc(x.problems.join(', '))}</div>`:''}</div></div>`;
+}
+async function loadParty(){
+  clearTimeout(_ptTimer);
+  let d; try { d = await api('/api/party'); } catch(e){ _ptTimer=setTimeout(loadParty,4000); return; }
+  _pt = d; const h=d.host, m=d.member;
+  { const ps = window._ptSnd || (window._ptSnd = {n:-1, ready:false, conn:false});
+    if (h.on){
+      const n = (h.members||[]).length, ready = n>0 && h.members.every(x=>x.total && x.synced===x.total);
+      if (ps.n >= 0 && n > ps.n) SND.play('party-invite');
+      if (ready && !ps.ready && ps.n >= 0) SND.play('achievement');
+      ps.n = n; ps.ready = ready;
+    } else if (m.on){
+      const conn = !!m.manifest, bad = (m.report||[]).some(r=>r.state!=='ok');
+      if (conn && !ps.conn) SND.play('welcome');
+      if (conn && !bad && !ps.ready && ps.conn) SND.play('achievement');
+      ps.conn = conn; ps.ready = conn && !bad;
+    } else { ps.n = -1; ps.ready = false; ps.conn = false; }
+  }
+  $('#navPtDot').style.display = (h.on||m.on) ? 'inline-block' : 'none';
+  if (state.view==='party'){
+    if (document.activeElement!==$('#ptName')) $('#ptName').value = m.prefs.name||'';
+    if (!$('#ptAddr').value) $('#ptAddr').value = m.prefs.last_host||'';
+    $('#ptIdle').style.display = (!h.on && !m.on) ? '' : 'none';
+    $('#ptHosting').style.display = h.on ? '' : 'none';
+    $('#ptMember').style.display = m.on ? '' : 'none';
+    $('#ptErr').textContent = m.on ? (m.error||'') : (h.on ? '' : (m.ended||''));
+    const rad = (h.addresses||m.addresses||[]).find(a=>a.startsWith('26.'));
+    $('#ptMyRadmin').textContent = rad || 'not found (is Radmin VPN connected?)';
+    if (!h.on && !m.on){
+      try { const st = await api('/api/play/state'); const n=(st.settings.mods||[]).length; $('#ptHostInfo').textContent = n ? `Uses your Play tab setup: ${n} mod(s) ticked${st.settings.scenario?'':' · pick a scenario there first'}.` : 'Tick mods and pick a scenario in the Play tab first.'; } catch(e){}
+    }
+    if (h.on){
+      const man=h.manifest||{mods:[]};
+      $('#ptMyAddr').textContent = rad || (h.addresses[0]||'?');
+      $('#ptHeroTitle').textContent = man.scenario_label || 'Your party';
+      $('#ptSetup').textContent = `${man.mods.length} mod(s) · ${fmtMB(man.mods.reduce((a,x)=>a+x.size,0))}. Change mods or scenario in the Play tab; friends see it within seconds.`;
+      if (!py.scen) { try { await loadPlay(); } catch(e){} }
+      const img = (py.scen && (py.scen.scenarios.concat(py.scen.vanilla).find(x=>x.rid===man.scenario)||{}).img) || '';
+      $('#ptHeroImg').style.backgroundImage = img ? `url('${img}')` : '';
+      const hm=$('#ptHMods'); hm.innerHTML='';
+      for (const r of man.mods){
+        const el=document.createElement('div'); el.className='pv-row';
+        el.innerHTML = `${thumbHtml(py.byId[r.guid]||{guid:r.guid,name:r.name},'sm')}<span class="n">${esc(r.name)}</span><span class="m">${r.kind==='local'?'your own mod':'Workshop'}${r.version?' · v'+esc(r.version):''} · ${fmtMB(r.size)}</span><span class="pt-chip ok">✓ yours</span>`;
+        hm.appendChild(el);
+      }
+      $('#ptHModsInfo').textContent = `${man.mods.length} mods · load order`;
+      const box=$('#ptMembers');
+      const everyone = h.everyone || [{name: m.prefs.name||'You', host:true, in_game:false}].concat(h.members||[]);
+      box.innerHTML = everyone.map(x=>memCard(x, !!x.host)).join('') + (h.members.length ? '' : '<div class="hint">Nobody else here yet. Send your friend the address above.</div>');
+      const waiting = h.members.filter(x=>!(x.total && x.synced===x.total));
+      $('#ptLaunch').disabled = waiting.length>0;
+      $('#ptLaunch').textContent = waiting.length ? `Waiting for ${waiting.map(x=>x.name).join(', ')}…` : (h.launched_at ? '▶ Launch again' : '▶ Launch party');
+      $('#ptLaunch').title = waiting.length ? 'Everyone needs every mod first. Their launchers are downloading them automatically.' : '';
+    }
+    if (m.on){
+      const man=m.manifest;
+      $('#ptKicker').textContent = man ? `${man.host}'s party` : 'Party';
+      $('#ptTitle').textContent = man ? (man.scenario_label||'Scenario') + (m.launched_at?(m.host_ready?' · host is in game':' · host is loading in'):'') : 'Connecting to '+m.host+'…';
+      const ck=$('#ptCheck'); ck.innerHTML='';
+      for (const r of (m.report||[])){
+        const el=document.createElement('div'); el.className='pv-row';
+        const chip = r.state==='ok'?'<span class="pt-chip ok">✓ synced</span>': r.state==='missing'?'<span class="pt-chip bad">✗ missing</span>':'<span class="pt-chip warn">⚠ different version</span>';
+        el.innerHTML = `${thumbHtml({guid:r.guid,name:r.name},'sm')}<span class="n">${esc(r.name)}</span><span class="m">${r.kind==='local'?"host's own mod":'Workshop'}${r.host_version?' · v'+esc(r.host_version):''}${r.state==='different'&&r.my_version?' (you: v'+esc(r.my_version)+')':''} · ${fmtMB(r.size)}</span>${chip}`;
+        ck.appendChild(el);
+      }
+      const bad=(m.report||[]).filter(r=>r.state!=='ok'), need=bad.reduce((a,r)=>a+r.size,0);
+      const s=m.sync, ws=d.ws||{};
+      const wsBad=bad.filter(r=>r.kind==='workshop'), wsNeed=wsBad.reduce((a,r)=>a+r.size,0);
+      $('#ptBar').style.display = (s.running||ws.running)?'':'none';
+      if (ws.running){ $('#ptBar').firstElementChild.style.width = (ws.expected?Math.min(100,100*ws.bytes/ws.expected):(ws.total?100*ws.done/ws.total:0))+'%'; $('#ptSyncTxt').textContent = `Downloading from the Workshop · ${ws.done||0} of ${ws.total} mods · ${fmtMB(ws.bytes||0)}${ws.expected?' of '+fmtMB(ws.expected):''}`; }
+      else if (s.running){ $('#ptBar').firstElementChild.style.width = (s.total?100*s.done/s.total:0)+'%'; $('#ptSyncTxt').textContent = `Copying from the host · ${s.mod} · ${fmtMB(s.done)} of ${fmtMB(s.total)}`; }
+      else if (ws.error) $('#ptSyncTxt').textContent = 'Workshop download: '+ws.error;
+      else if (s.error) $('#ptSyncTxt').textContent = 'Sync failed: '+s.error;
+      else $('#ptSyncTxt').textContent = bad.length ? `Getting ${bad.length} mod(s) automatically, ${fmtMB(need)}…` : (m.launched_at ? (m.host_ready ? 'All mods ready. The host is in game: joining…' : 'All mods ready. The host is loading in: you join the moment they\'re in.') : 'All mods ready. Waiting for the host to launch.');
+      if (bad.length && m.launched_at) $('#ptSyncTxt').textContent += ' The host is already playing: you join as soon as your mods finish.';
+      $('#ptWs').disabled = s.running || ws.running || !wsBad.length;
+      $('#ptWs').textContent = wsBad.length ? `Download Workshop mods (${wsBad.length}, ${fmtMB(wsNeed)})` : 'Workshop mods ✓';
+      $('#ptSync').disabled = s.running || ws.running || !bad.length;
+      $('#ptSync').textContent = bad.length ? `Sync from host (${fmtMB(need)})` : 'Sync from host ✓';
+      $('#ptReady').checked = m.ready; $('#ptReady').disabled = bad.length>0;
+      $('#ptAuto').checked = m.prefs.auto_join!==false;
+      $('#ptGo').disabled = bad.length>0 || !m.launched_at;
+      $('#ptGo').title = !m.launched_at ? 'Waiting for the host to launch' : '';
+      const meId = m.prefs.id, meName = m.prefs.name;
+      $('#ptOthers').innerHTML = (m.members||[]).length ? m.members.map(x=>memCard(x, x.id ? x.id===meId : x.name===meName)).join('') : '<div class="hint">Just you so far.</div>';
+    }
+  }
+  // quick on the Party tab or while in a party; otherwise just often enough to light the nav dot
+  _ptTimer=setTimeout(loadParty, state.view==='party' ? 2000 : ((h.on||m.on) ? 5000 : 20000));
+}
+$('#ptName').onchange = ev => api('/api/party/prefs',{name:ev.target.value.trim()});
+$('#ptHost').onclick = async () => { await api('/api/party/prefs',{name:$('#ptName').value.trim()}); const r=await api('/api/party/host',{}); if (r.error){ $('#ptErr').textContent=r.error; return; } $('#ptErr').textContent=''; loadParty(); };
+$('#ptJoin').onclick = async () => { const r=await api('/api/party/join',{host:$('#ptAddr').value.trim(), name:$('#ptName').value.trim()}); if (r.error && !r.on){ $('#ptErr').textContent=r.error; return; } loadParty(); };
+$('#ptEnd').onclick = async () => { if (!confirm('End the party? Friends are disconnected from the party (not from a running game).')) return; await api('/api/party/host/stop',{}); loadParty(); };
+$('#ptLeave').onclick = async () => { await api('/api/party/leave',{}); loadParty(); loadPlay(); };
+$('#ptCopy').onclick = () => { navigator.clipboard && navigator.clipboard.writeText($('#ptMyAddr').textContent); $('#ptCopy').textContent='Copied'; setTimeout(()=>$('#ptCopy').textContent='Copy',1500); };
+$('#ptWs').onclick = async () => { const r=await api('/api/party/workshop',{}); if (r.need_install){ if (confirm(r.error+'\n\nOpen Steam to install it now?')) api('/api/download/install',{}); return; } if (r.error) $('#ptErr').textContent=r.error; loadParty(); };
+$('#ptSync').onclick = async () => { const r=await api('/api/party/sync',{}); if (r.error) $('#ptErr').textContent=r.error; loadParty(); };
+$('#ptReady').onchange = ev => api('/api/party/ready',{ready:ev.target.checked});
+$('#ptAuto').onchange = ev => api('/api/party/prefs',{auto_join:ev.target.checked});
+$('#ptGo').onclick = async () => { const r=await api('/api/party/launch',{}); $('#ptErr').textContent = r.ok ? '' : r.error; };
+$('#ptLaunch').onclick = async () => {
+  $('#ptLaunch').disabled=true; const r=await api('/api/party/host/launch',{}); $('#ptLaunch').disabled=false;
+  $('#ptErr').textContent = r.ok ? '' : r.error;
+  if (r.ok) $('#ptErr').textContent = '';
+};
+
+// ---------------------------------------------------------------- Workshop downloads (no game)
+let _dlRunning = false, _dlDone = -1, _dlStarted = null;
+async function dlStatus(){
+  let d; try { d = await api('/api/download'); } catch(e){ return; }
+  _dlRunning = !!d.running;
+  // a mod finished downloading (or an update landed). The first poll only takes note of how
+  // things stand, so opening the app never replays a download that finished earlier.
+  const first = _dlStarted === null;
+  if (d.started_at !== _dlStarted){ _dlStarted = d.started_at; _dlDone = (d.mode==='check' && !d.running) || first ? -2 : (d.mode==='check' ? 0 : (d.done||0)); if (first && d.running && d.mode!=='check') _dlDone = d.done||0; }
+  else if (d.mode !== 'check' && _dlDone >= 0 && (d.done||0) > _dlDone){ _dlDone = d.done; SND.play('bing'); }
+  if (d.mode==='check' && !d.running && (d.updated||[]).length && _dlDone !== -2){ _dlDone = -2; SND.play('bing'); }
+  const b=$('#dlbtn'), m=$('#dlmsg');
+  if (d.running && d.mode==='check'){
+    const n = (d.mods||[]).filter(x=>x.bytes>0).length;
+    m.textContent = n ? `⬇ Updating ${n} mod(s) · ${fmtMB(d.bytes||0)}` : '⟳ Checking for mod updates…';
+  } else if (d.running){
+    m.textContent = `⬇ Downloading ${d.done}/${d.total} · ${fmtMB(d.bytes||0)}${d.expected?' of '+fmtMB(d.expected):''}`;
+  } else {
+    if (d.finished_at && Date.now()/1000 - d.finished_at < 120) m.textContent = d.error ? 'Download: '+d.error : `Downloaded ${d.done} mod(s).`;
+    else m.textContent='';
+  }
+}
+$('#dlbtn').onclick = async () => {
+  if ($('#dlbtn').dataset.run){ await api('/api/download/stop',{}); return dlStatus(); }
+  const r = await api('/api/download/playlist',{});
+  if (r.need_install){ if (confirm(r.error+'\n\nOpen Steam to install it now?')) api('/api/download/install',{}); return; }
+  if (r.nothing) { $('#dlmsg').textContent='Everything on the playlist is already downloaded.'; return; }
+  if (!r.ok) { $('#dlmsg').textContent=r.error||'Could not start.'; return; }
+  dlStatus(); showBrowse(); history.pushState({kind:'view', view:'downloads'}, '', '#/downloads'); setView('downloads');
+};
+(function dlTick(){ dlStatus().finally(()=>setTimeout(dlTick, _dlRunning ? 2000 : 6000)); })();
+$('#dlmsg').onclick = () => { showBrowse(); history.pushState({kind:'view', view:'downloads'}, '', '#/downloads'); setView('downloads'); };
+
+// ---------------------------------------------------------------- Downloads tab (Steam style)
+const fmtRate = b => b>=1e6 ? (b/1e6).toFixed(1)+' MB/s' : b>=1e3 ? Math.round(b/1e3)+' KB/s' : Math.round(b)+' B/s';
+const _dlHist = []; let _dlPeak = 0, _dlTimer = null;
+function dlRow(r, kind){
+  const el=document.createElement('div'); el.className='dl-row';
+  const pct = r.size ? Math.min(100, 100*(r.bytes||0)/r.size) : 0;
+  let right='', sub='';
+  if (kind==='active'){ sub = `${fmtMB(r.bytes||0)}${r.size?' / '+fmtMB(r.size):''} · ${esc(r.source)}`; right = r.size?Math.round(pct)+'%':'Downloading'; }
+  else if (kind==='queued'){ sub = `${r.size?fmtMB(r.size):''} · ${esc(r.source)}`; right='Queued'; }
+  else { const d=new Date(r.at*1000); sub = `${r.size?fmtMB(r.size):''} · ${esc(r.source)}`; right = 'Completed: '+d.toLocaleTimeString([], {hour:'numeric',minute:'2-digit'}); }
+  el.innerHTML = `<div class="th" style="${r.thumb?`background-image:url('${esc(r.thumb)}')`:''}">${r.thumb?'':'⬇'}</div><div class="t"><div class="n">${esc(r.name)}</div><div class="s">${sub}</div>${kind==='active'?`<div class="pb"><i style="width:${pct}%"></i></div>`:''}</div><div class="r">${right}</div>`;
+  return el;
+}
+async function loadDownloads(){
+  clearTimeout(_dlTimer);
+  let d; try { d = await api('/api/downloads'); } catch(e){ _dlTimer=setTimeout(loadDownloads,2000); return; }
+  const n = d.active.length + d.queued.length;
+  const c=$('#navDlCount'); c.style.display = n?'inline':'none'; c.textContent = n;
+  if (state.view==='downloads'){
+    _dlHist.push(d.speed||0); if (_dlHist.length>150) _dlHist.shift(); _dlPeak=Math.max(_dlPeak, d.speed||0);
+    $('#dlNet').textContent = fmtRate(d.speed||0); $('#dlPeak').textContent = fmtRate(_dlPeak);
+    $('#dlTotal').textContent = fmtMB(d.active.reduce((a,r)=>a+(r.bytes||0),0));
+    const mx = Math.max(1, ..._dlHist), sp = Math.max(1, _dlHist.length-1);
+    const pts = _dlHist.map((v,i)=>`${(i*300/sp).toFixed(1)},${(58-52*v/mx).toFixed(1)}`);
+    $('#dlLine').setAttribute('points', pts.length>1 ? `0,60 ${pts.join(' ')} 300,60` : '');
+    $('#dlStopAll').style.display = d.workshop.running ? '' : 'none';
+    const ab=$('#dlActiveBox'); ab.innerHTML='';
+    if (d.active.length){ const h=document.createElement('div'); h.className='dl-sec'; h.innerHTML=`<h3>Downloading <span>(${d.active.length})</span></h3><hr>`; ab.appendChild(h); d.active.forEach(r=>ab.appendChild(dlRow(r,'active'))); }
+    $('#dlQn').textContent = `(${d.queued.length})`;
+    const q=$('#dlQueue'); q.innerHTML = d.queued.length ? '' : '<div class="dl-empty">There are no downloads in the queue</div>'; d.queued.forEach(r=>q.appendChild(dlRow(r,'queued')));
+    $('#dlCn').textContent = `(${d.history.length})`;
+    const h=$('#dlDone'); h.innerHTML = d.history.length ? '' : '<div class="dl-empty">Nothing downloaded yet this session</div>'; d.history.forEach(r=>h.appendChild(dlRow(r,'done')));
+    $('#dlErr').textContent = d.workshop.error ? 'Workshop download: '+d.workshop.error : (d.sync_error ? 'Sync from host: '+d.sync_error : (!d.installed ? 'Workshop downloads need the free "Arma Reforger Server" tool from Steam (it runs hidden). The first download offers to install it.' : ''));
+  }
+  _dlTimer=setTimeout(loadDownloads, state.view==='downloads' ? 1000 : 3000);
+}
+$('#dlCheckUpd').onclick = async () => { const b=$('#dlCheckUpd'); b.disabled=true; b.textContent='Checking…';
+  let r={}; try { r = await api('/api/mods/check-updates',{}); } catch(e){}
+  if (r.error){ b.textContent = r.error; setTimeout(()=>{ b.disabled=false; b.textContent='Check for updates'; }, 4000); return; }
+  b.textContent = 'Checking for updates…'; loadDownloads();
+  // the check runs the server tool: poll until it is done, then say what it updated
+  const poll = async () => { let d={}; try { d = await api('/api/download'); } catch(e){}
+    if (d.running){ setTimeout(poll, 2000); return; }
+    const u = d.updated||[]; b.textContent = d.error ? 'Check failed: '+d.error : (u.length ? `Updated ${u.length}: ${u.join(', ')}` : 'All up to date');
+    loadDownloads(); setTimeout(()=>{ b.disabled=false; b.textContent='Check for updates'; }, 8000); };
+  setTimeout(poll, 2000); };
+$('#dlClear').onclick = async () => { await api('/api/downloads/clear',{}); loadDownloads(); };
+$('#dlStopAll').onclick = async () => { await api('/api/download/stop',{}); loadDownloads(); };
+loadDownloads();
+
+// ---------------------------------------------------------------- My Mods (installed + favorites + playlists)
+const lib = {data:null, sel:'installed', show:'all', view:'grid'};
+try { lib.view = localStorage.getItem('lbView') || 'grid'; } catch(e){}
+function libSize(b){ return typeof fmtSz==='function' ? fmtSz(b) : ''; }
+async function loadLibrary(){
+  lib.data = await api('/api/library');
+  const d = lib.data; state.active = d.active;
+  if (lib.sel.startsWith('pl:') && !d.playlists.some(p=>'pl:'+p.pid===lib.sel)) lib.sel = 'pl:'+d.active;
+  renderLibSide(); renderLib();
+}
+function libSets(){
+  const d = lib.data, it = d.items;
+  const inst = it.filter(x=>x.installed && x.kind==='workshop'), loc = it.filter(x=>x.kind==='local'), fav = it.filter(x=>x.fav);
+  return {inst, loc, fav};
+}
+function renderLibSide(){
+  const d = lib.data, {inst, loc, fav} = libSets(); const side = $('#lbSide'); side.innerHTML='';
+  const row = (key, ic, name, count, live) => { const el=document.createElement('div'); el.className='lb-nav'+(lib.sel===key?' on':'');
+    el.innerHTML=`<span class="ic">${ic}</span><span class="n">${esc(name)}</span>${live?'<span class="live">IN GAME</span>':''}<span class="c">${count}</span>`;
+    el.onclick=()=>{ lib.sel=key; renderLibSide(); renderLib(); }; side.appendChild(el); };
+  const h1=document.createElement('h5'); h1.textContent='Library'; side.appendChild(h1);
+  row('installed','🖥','Installed on this PC',inst.length); row('local','🛠','Your local projects',loc.length); row('favs','♥','Favorites',fav.length);
+  const h2=document.createElement('h5'); h2.innerHTML='Playlists <button id="lbNew">+ New</button>'; side.appendChild(h2);
+  for (const p of d.playlists) row('pl:'+p.pid,'≡',p.name,p.ids.length,p.pid===d.active);
+  $('#lbNew').onclick = async ev => { ev.stopPropagation(); const name=prompt('Playlist name'); if(!name) return; const r=await api('/api/playlist/create',{name}); lib.sel='pl:'+r.pid; loadLibrary(); loadPlaylists(); };
+}
+function libCurrent(){
+  const d = lib.data, {inst, loc, fav} = libSets();
+  if (lib.sel==='installed') return {title:'Installed on this PC', items:inst};
+  if (lib.sel==='local') return {title:'Your local projects', items:loc};
+  if (lib.sel==='favs') return {title:'Favorites', items:fav};
+  const pid = parseInt(lib.sel.slice(3)); const p = d.playlists.find(x=>x.pid===pid) || {name:'?', ids:[]};
+  return {title:p.name, pid, live: pid===d.active, items: d.items.filter(x=>x.playlists.includes(pid))};
+}
+function renderLib(){
+  const cur = libCurrent(), q = ($('#lbQ').value||'').toLowerCase();
+  let items = cur.items.filter(x => !q || (x.name||'').toLowerCase().includes(q) || (x.author||'').toLowerCase().includes(q));
+  if (lib.show==='inst') items = items.filter(x=>x.installed); if (lib.show==='miss') items = items.filter(x=>!x.installed);
+  const srt = $('#lbSort').value;
+  items.sort((a,b)=> srt==='size' ? (b.size||0)-(a.size||0) : srt==='updated' ? String(b.updated_at).localeCompare(String(a.updated_at)) : srt==='rating' ? (b.rating||0)-(a.rating||0) : (a.name||'').localeCompare(b.name||'', undefined, {sensitivity:'base'}));
+  const miss = cur.items.filter(x=>!x.installed), size = cur.items.reduce((a,x)=>a+(x.size||0),0), missSize = miss.reduce((a,x)=>a+(x.size||0),0);
+  $('#lbTitle').innerHTML = esc(cur.title) + (cur.live?'<span class="live">IN GAME</span>':'');
+  $('#lbSub').textContent = `${cur.items.length} mod(s)${size?' · '+libSize(size):''}${cur.pid!=null?` · ${cur.items.length-miss.length} on this PC${miss.length?`, ${miss.length} not downloaded (${libSize(missSize)})`:''}`:''}`;
+  const acts = $('#lbActs'); acts.innerHTML='';
+  const btn = (label, cls, fn, title) => { const b=document.createElement('button'); b.textContent=label; if(cls) b.className=cls; if(title) b.title=title; b.onclick=fn; acts.appendChild(b); };
+  const playThese = async ids => { await api('/api/play/save',{mods:ids}); showBrowse(); history.pushState({kind:'view', view:'play'}, '', '#/play'); setView('play'); };
+  if (cur.pid!=null){
+    btn('▶ Play these', miss.length?'':'primary', ()=>playThese(cur.items.filter(x=>x.installed).map(x=>x.id)), 'Tick these mods in the Play tab');
+    if (!cur.live) btn('Use in game', '', async()=>{ await api('/api/playlist/activate',{pid:cur.pid}); loadLibrary(); loadPlaylists(); }, 'Make this the playlist the game gets');
+    btn('Rename','',async()=>{ const n=prompt('New name', cur.title); if(!n) return; await api('/api/playlist/rename',{pid:cur.pid,name:n}); loadLibrary(); loadPlaylists(); });
+    btn('Duplicate','',async()=>{ const n=prompt('Name for the copy', cur.title+' (copy)'); if(!n) return; const r=await api('/api/playlist/duplicate',{pid:cur.pid,name:n}); lib.sel='pl:'+r.pid; loadLibrary(); loadPlaylists(); });
+    btn('Delete','danger',async()=>{ if(!confirm('Delete playlist '+cur.title+'? Mods stay on your PC.')) return; await api('/api/playlist/delete',{pid:cur.pid}); lib.sel='installed'; loadLibrary(); loadPlaylists(); });
+  } else if (lib.sel==='installed'){
+    btn('▶ Play these','primary',()=>playThese(cur.items.map(x=>x.id)),'Tick all installed mods in the Play tab');
+    btn('Unsubscribe from all','danger',async()=>{
+      const n = cur.items.length;
+      if (!confirm(`Unsubscribe from ALL ${n} Workshop mods?\n\nThey come off every playlist and are deleted from this PC. Your local projects are never touched.`)) return;
+      if (prompt('This deletes '+n+' Workshop mods from your PC. Type DELETE to confirm.')!=='DELETE') return;
+      const r = await api('/api/unsubscribe_all',{});
+      alert(r.kept_running ? `${r.unsubscribed} unsubscribed. Arma is running, so the files were kept; close the game and they are removed the next time you unsubscribe.` : `${r.unsubscribed} Workshop mod(s) unsubscribed, ${r.removed.length} deleted from this PC.`);
+      loadLibrary(); loadPlaylists();
+    }, 'Remove every Workshop mod from your PC and your playlists (never your local projects)');
+    btn('Add all to a playlist','',async()=>{ const r=await api('/api/import_installed',{}); alert(r.added?`${r.added} mod(s) added to the active playlist.`:'Every installed mod is already on a playlist.'); loadLibrary(); });
+  }
+  const box = $('#lbCards'); box.className = 'lb-cards'+(lib.view==='list'?' lb-list':''); box.innerHTML='';
+  if (!items.length){ box.innerHTML = `<div class="lb-empty">${cur.items.length?'No mods match.':(cur.pid!=null?'This playlist is empty. Add mods from Browse with the + button.':'Nothing here yet.')}</div>`; return; }
+  const plById = Object.fromEntries(lib.data.playlists.map(p=>[p.pid,p.name]));
+  for (const x of items){
+    const el=document.createElement('div'); el.className='lb-card';
+    const h = typeof hue==='function' ? hue(x.id) : 200;
+    const bg = x.thumb ? `background-image:url('${esc(x.thumb)}')` : `background:linear-gradient(135deg,hsl(${h},45%,32%),hsl(${(h+40)%360},50%,18%))`;
+    const st = [];
+    if (x.kind==='local') st.push(`<span class="loc">${x.build==='packed'?(x.stale?'Local · rebuild':'Local · built'):'Local'}</span>`);
+    else if (x.installed) st.push('<span class="ok">✓ On PC</span>'); else st.push('<span class="no">Not downloaded</span>');
+    if (x.installed && x.latest && x.version && x.latest!==x.version) st.push('<span class="up">Update</span>');
+    const pls = x.playlists.map(p=>plById[p]).filter(Boolean);
+    const meta = [x.author&&x.author!=='you'?'by '+x.author:'', x.version?'v'+x.version:'', libSize(x.size), pls.length?('≡ '+pls.join(', ')):''].filter(Boolean).join(' · ');
+    el.innerHTML = `<div class="im" style="${bg}">${x.thumb?'':esc(typeof initials==='function'?initials(x.name):'')}<div class="st">${st.join('')}</div>${lib.view==='grid'?`<button class="fv${x.fav?' on':''}" title="Favorite">♥</button>`:''}</div>
+      <div class="t"><div class="n" title="${esc(x.name)}">${esc(x.name)}</div><div class="m">${esc(meta)}</div></div>
+      <div class="ac">${lib.view==='list'?`<button class="fv${x.fav?' on':''}" title="Favorite">♥</button>`:''}<button data-a="pl">≡ Playlists</button>${cur.pid!=null?'<button data-a="rm" title="Remove from this playlist (deleted from the PC if no other playlist has it)">Remove</button>':''}${x.kind==='workshop'&&(x.installed||x.playlists.length)?'<button data-a="un" title="Take it off every playlist and delete it from this PC">Unsubscribe</button>':''}</div>`;
+    const open = () => { if (x.kind==='workshop') openMod(x.id); };
+    el.querySelector('.im').onclick = ev => { if (!ev.target.closest('button')) open(); };
+    el.querySelector('.t .n').onclick = open;
+    el.querySelector('.fv').onclick = async ev => { ev.stopPropagation(); await api('/api/fav',{id:x.id}); loadLibrary(); };
+    el.querySelector('[data-a=pl]').onclick = ev => libPlaylistPop(ev, x);
+    const rm = el.querySelector('[data-a=rm]'); if (rm) rm.onclick = async () => { await api('/api/playlist/remove',{id:x.id, pid:cur.pid}); loadLibrary(); loadPlaylists(); };
+    const un = el.querySelector('[data-a=un]'); if (un) un.onclick = async () => { if (!confirm('Unsubscribe from '+x.name+'? It comes off every playlist and is deleted from this PC.')) return; await api('/api/unsubscribe',{id:x.id}); loadLibrary(); loadPlaylists(); };
+    box.appendChild(el);
+  }
+}
+function libPlaylistPop(ev, x){
+  ev.stopPropagation(); document.querySelectorAll('.lb-pop').forEach(p=>p.remove());
+  const pop=document.createElement('div'); pop.className='lb-pop';
+  pop.innerHTML = '<div class="hint" style="padding:2px 6px 6px">Playlists with '+esc(x.name)+'</div>' + lib.data.playlists.map(p=>`<label><input type="checkbox" data-pid="${p.pid}" ${x.playlists.includes(p.pid)?'checked':''}> ${esc(p.name)}</label>`).join('');
+  document.body.appendChild(pop);
+  const r = ev.target.getBoundingClientRect(); pop.style.left = Math.min(r.left, innerWidth-240)+'px'; pop.style.top = (r.bottom+4)+'px';
+  pop.onchange = async e => { const pid=parseInt(e.target.dataset.pid); await api(e.target.checked?'/api/playlist/add':'/api/playlist/remove',{id:x.id, pid}); await loadLibrary(); loadPlaylists(); };
+  setTimeout(()=>document.addEventListener('click', function h(e2){ if (!pop.contains(e2.target)){ pop.remove(); document.removeEventListener('click', h); } }), 0);
+}
+$('#lbQ').oninput = renderLib;
+$('#lbSort').onchange = renderLib;
+$('#lbShow').onclick = ev => { const b=ev.target.closest('button'); if(!b) return; lib.show=b.dataset.s; $$('#lbShow button').forEach(x=>x.classList.toggle('on',x===b)); renderLib(); };
+$('#lbView').onclick = ev => { const b=ev.target.closest('button'); if(!b) return; lib.view=b.dataset.v; try{localStorage.setItem('lbView',lib.view);}catch(e){} $$('#lbView button').forEach(x=>x.classList.toggle('on',x===b)); renderLib(); };
+$$('#lbView button').forEach(x=>x.classList.toggle('on', x.dataset.v===lib.view));
+
+// ---------------------------------------------------------------- app updates from the host
+const _loadedAt = Date.now();
+function bingLater(){ const wait = Math.max(0, 7500 - (Date.now() - _loadedAt)); setTimeout(()=>SND.play('bing'), wait); }   // never on top of the boot sound
+async function updStatus(){
+  let u; try { u = await api('/api/update'); } catch(e){ return; }
+  const bar=$('#updBar');
+  if (u.applying){ bar.classList.add('on'); $('#updTxt').textContent='Downloading and installing… the app closes and reopens by itself.'; $('#updGo').style.display='none'; return; }
+  if (u.is_source){
+    // the developer's copy: files edited since it started are not running yet, and friends
+    // only get them after this restart
+    const n = (u.local_changes||[]).length;
+    if (n && !window._updBinged){ window._updBinged = true; bingLater(); }
+    bar.classList.toggle('on', n>0);
+    $('#updBar b').textContent = '⟳ Update ready';
+    $('#updGo').textContent = 'Restart & apply'; $('#updGo').dataset.mode = 'restart';
+    if (n) $('#updTxt').textContent = `${n} app file${n>1?'s':''} changed since this window opened (${u.local_changes.slice(0,4).join(', ')}${n>4?'…':''}). Restart to run them; your party gets the update after that.`;
+    return;
+  }
+  if (u.available && !window._updBinged){ window._updBinged = true; bingLater(); }
+  bar.classList.toggle('on', !!u.available);
+  if (u.available) $('#updTxt').textContent = `A newer version is on ${u.source_name?u.source_name+"'s":"the host's"} PC (${u.files.length} file${u.files.length>1?'s':''} changed). Takes a few seconds.`;
+}
+$('#updGo').onclick = async () => {
+  $('#updGo').disabled = true; $('#updGo').textContent = 'Updating…';
+  const r = await api($('#updGo').dataset.mode==='restart' ? '/api/update/restart' : '/api/update/apply', {});
+  if (!r.ok){ alert(r.error||'Update failed'); $('#updGo').disabled=false; $('#updGo').textContent='Update & restart'; return; }
+  $('#updTxt').textContent = 'Installing… the app closes and reopens by itself.'; $('#updGo').style.display='none';
+};
+updStatus(); setInterval(updStatus, 10000);
+// clicks: a quiet blip for ordinary buttons, the big sounds for the big moments
+const SND_BUTTONS = { pyGo:'rare-achievement-fade', ptLaunch:'rare-achievement-fade', ptGo:'transition', launchbtn:'transition',
+  closegamebtn:'back', ptHost:'select-a-alt', ptJoin:'select-a-alt', ptLeave:'select-b', ptEnd:'select-b', updGo:'select-one',
+  mpAdd:'', dlCheckUpd:'select-one', rgPrev:'page-left', rgNext:'page-right' };
+document.addEventListener('click', ev => {
+  const dl = ev.target.closest('.ddmenu a');     // Browse dropdown items
+  if (dl) { SND.play('select-a', .8); window._navQuiet = true; setTimeout(()=>{ window._navQuiet = false; }, 0); return; }
+  const b = ev.target.closest('button'); if (!b) return;
+  if (b.disabled) { SND.play('inactive', .8); return; }
+  if (b.id === 'sortbtn') { SND.play($('#sortmenu').classList.contains('on') ? 'fold' : 'unfold', .8); return; }
+  if (b.closest('#nav')) return;                 // tabs play the page sounds in setView
+  if (b.id in SND_BUTTONS) { SND.play(SND_BUTTONS[b.id]); return; }
+  SND.play('select-a', .8);
+}, true);
+// radios and checkboxes (sort menu, filters, settings)
+document.addEventListener('change', ev => {
+  const t = ev.target; if (!t.matches('input[type=radio],input[type=checkbox]') || t.id === 'sndOn') return;
+  if (t.closest('#pyList,.pyrow')) return;       // mod ticks have their own sounds
+  SND.play(t.type === 'checkbox' && !t.checked ? 'back-2' : 'select-a', .8);
+}, true);
+// the little focus tick when the pointer moves over menu items, like moving the stick on the dashboard
+document.addEventListener('mouseover', ev => {
+  const it = ev.target.closest('.ddmenu a, .sortmenu label, #nav button');
+  if (!it || it === window._sndHover || (ev.relatedTarget && it.contains(ev.relatedTarget))) return;
+  window._sndHover = it; SND.play('focus', .6);
+});
+// open a mod page
+const _openModSnd = openMod;
+openMod = function(id, tab, fromHistory){ if (!fromHistory) SND.play('hud-open', .7); window._sndOpening = true; try { return _openModSnd(id, tab, fromHistory); } finally { window._sndOpening = false; } };
+const _closeModSnd = closeMod;   // closing the mod page: only its own sound when nothing else is playing one (Back, opening another mod)
+closeMod = function(){ if ($('#modal').classList.contains('on') && !window._sndOpening && !window._navQuiet) SND.play('hud-close', .7); return _closeModSnd(); };
+// settings
+$('#themeSel').value = document.documentElement.dataset.theme || 'xbox';
+$('#themeSel').onchange = () => { const t=$('#themeSel').value; document.documentElement.dataset.theme=t; try{ localStorage.setItem('theme', t); }catch(e){} reloadView(); };
+$('#sndOn').checked = SND.on; $('#sndVol').value = Math.round(SND.vol*100);
+$('#sndOn').onchange = () => { SND.on = $('#sndOn').checked; SND.play('select-a'); };
+$('#sndVol').oninput = () => { SND.vol = $('#sndVol').value/100; };
+$('#sndVol').onchange = () => SND.play('select');
+// the dashboard boot sound when the app opens (once per window)
+setTimeout(()=>{ window._uiReady = true; }, 1500);   // no page sounds while the app is still setting itself up
+try { if (!sessionStorage.getItem('booted')) { sessionStorage.setItem('booted','1'); setTimeout(()=>SND.play('startup', .8), 300); } } catch(e){}
+// remember the window's size and place (the launcher reopens it the same way)
+(function(){ let last='', t=null;
+  const save = () => { const maxed = window.outerWidth >= screen.availWidth - 2 && window.outerHeight >= screen.availHeight - 2; const w={w:window.outerWidth, h:window.outerHeight, x:window.screenX, y:window.screenY, max:maxed}; const k=JSON.stringify(w);
+    if (k!==last && w.w>=600 && w.h>=400){ last=k; api('/api/window', w).catch(()=>{}); } };
+  window.addEventListener('resize', () => { clearTimeout(t); t=setTimeout(save, 800); });
+  setInterval(save, 5000);   // moving the window fires no event
+})();
+api('/api/sync',{full:false}).catch(()=>{});   // every time the window opens: pick up what changed on the Workshop
+loadFacets(); loadList(); status(); setInterval(status, 3000); setView('home'); loadParty();
+</script>
+</body>
+</html>

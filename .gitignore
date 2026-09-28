@@ -1,0 +1,21 @@
+# personal data, caches and logs (each install makes its own)
+mods.db
+mods.db-*
+config.json
+party_settings.json
+party_hashes.json
+play_settings.json
+play_cache.json
+window.json
+*.log
+__pycache__/
+*.pyc
+
+# working folders
+window-profile/
+_build/
+_download/
+_backup_*/
+_banner_preview.jpg
+_start_game.bat
+companion/
